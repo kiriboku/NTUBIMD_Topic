@@ -2,6 +2,7 @@
 var linebot = require('linebot');
 const { addAbortSignal } = require('stream');
 let index2 = require('./js/index2');
+let index = require('./js/index');
 
 // 用於辨識Line Channel的資訊
 var bot = linebot({
@@ -92,6 +93,8 @@ bot.on('message', function (event) {
 });
 
 bot.on('follow', function (event) {
+  userId = String(event.source.userId)
+  index.new_user_creat(userId)
   event.reply("謝謝加入好友").then(function (data) {
     // 當訊息成功回傳後的處理
   }).catch(function (error) {
