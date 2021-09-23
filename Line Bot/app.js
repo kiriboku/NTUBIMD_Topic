@@ -4,6 +4,7 @@ const { addAbortSignal } = require('stream');
 let index2 = require('./js/index2');
 let index = require('./js/index');
 
+
 // 用於辨識Line Channel的資訊
 var bot = linebot({
   channelId: '1656110228',
@@ -77,19 +78,26 @@ function knowQuestion(que) {
 
 // 當有人傳送訊息給Bot時
 bot.on('message', function (event) {
+  if (event.message.text == "關注清單") {
+    let t = ""
+    Promise.all([index.show_follow(event.source.userId)])
+      .then(([oneSecond]) => {
+        oneSecond.forEach(element => Promise.all([index2.list(element)])
+          .then(([oneSecond]) => {
+            t = t + "\n" + oneSecond
+          }));
+      })
+    setTimeout(() => {
+      // 三秒後回傳資料
+      event.reply(t).then(function (data) {
+        // 當訊息成功回傳後的處理
+      })
+    }, 2000);
+  }
   // event.message.text是使用者傳給bot的訊息
   // 準備要回傳的內容
-  var answer = knowQuestion(event.message.text)
-  var replyMsg = answer;
-  Promise.all([index2.list(2330)])
-    .then(([oneSecond]) => {
-      var x = oneSecond
-      event.reply(x).then(function (data) {
-        // 當訊息成功回傳後的處理
-      }).catch(function (error) {
-        // 當訊息回傳失敗後的處理
-      });
-    })
+  // var answer = knowQuestion(event.message.text)
+  // var replyMsg = answer;
 });
 
 bot.on('follow', function (event) {

@@ -27,7 +27,7 @@ conn.connect(
 
 module.exports.show_follow = function show_follow(user_id) {
     return new Promise((resolve) => {
-        conn.query('SELECT * FROM follow_list where user_id = ' + String(user_id),
+        conn.query('SELECT * FROM follow_list where user_id = ' + "'" + String(user_id) + "'",
             function (err, results) {
                 if (err) throw err;
                 var follow_lest = []
@@ -63,7 +63,7 @@ module.exports.new_user_creat = function new_user_creat(user_id) {
 //為第一次加入好友的使用者建立關注清單
 
 function insertData_load(user_id, stock) {
-    conn.query('SELECT * FROM follow_list where user_id = ' + String(user_id),
+    conn.query('SELECT * FROM follow_list where user_id = ' + "'" + String(user_id) + "'",
         function (err, results) {
             if (err) throw err;
             if (results[0].follow_1 == null) {
@@ -100,7 +100,7 @@ function UPDATE(user_id, stock, location) {
 //新增關注代號
 
 function remove_Data_load(user_id, stock) {
-    conn.query('SELECT * FROM follow_list where user_id = ' + String(user_id),
+    conn.query('SELECT * FROM follow_list where user_id = ' + "'" + String(user_id) + "'",
         function (err, results) {
             if (err) throw err;
             if (String(results[0].follow_1) == String(stock)) {
@@ -136,35 +136,15 @@ function UPDATE_remove(user_id, stock, location) {
 module.exports.check_message = function check_message(user_id, message) {
     let messages = String(message)
     let user_ids = String(user_id)
-    check_new(user_ids)
-    if (messages == "關注清單") {
-        show_follow(user_ids)
-    }
-    else if (messages.substr(0, 1) == "+") {
-        stock = String(messages.substr(1, 4))
+    if (messages.substr(0, 1) == "+") {
+        stock = messages.substr(1, 4)
         insertData_load(user_ids, stock)
     }
     else if (messages.substr(0, 1) == "-") {
-        stock = String(messages.substr(1, 4))
+        stock = messages.substr(1, 4)
         remove_Data_load(user_ids, stock)
-    }
-    else {
-        console.log("無法辨識")
     }
 }
 
-function check_new(user_id) {
-    user_ids = String(user_id)
-    conn.query('SELECT user_id FROM follow_list where user_id = ' + user_ids,
-        function (err, results) {
-            if (err) throw err;
-            if (results == "") {
-                new_user_creat(user_ids)
-            }
-        })
-};
+//確認使用者訊息
 
-//使用者關注清單至資料庫
-
-// user = "kiriboku"
-// new_user_creat(user)
