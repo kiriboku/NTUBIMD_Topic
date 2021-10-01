@@ -59,14 +59,24 @@ fuzz = require('fuzzball')//require 模組
 
 //Batch Extract
 // With array of strings
-    // query = "polar bear";//搜尋條件
-    // choices = ["brown bear", "polar bear", "koala bear"];//搜尋陣列
-    // results = fuzz.extract(query, choices);//fuzz.extract(query, choices, options);
-    // console.log(results)
+    query = "polar bear";//搜尋條件
+    choices = ["brown bear", "polar bear", "koala bear"];//搜尋陣列
+    results = fuzz.extract(query, choices);//fuzz.extract(query, choices, options);
+    console.log(results[0][1])
+    var max = 0
+    var max_text = 0
+    for (let i = 0; i < 3; i++) {
+        if (results[i][1] > max) {
+            max = results[i][1]
+            max_text = results[i][0]
+        }
+    }
+    console.log(max_text)
     // [choice, score, index]
     // [ [ 'polar bear', 100, 1 ],
     // [ 'koala bear', 80, 2 ],
     // [ 'brown bear', 60, 0 ] ]
+
 
 // With object
     // query = "polar bear";
@@ -105,7 +115,7 @@ fuzz = require('fuzzball')//require 模組
 //Wildcards
 // options = {wildcards: "*x"}; // '*' and 'x' are both wildcards
 // console.log(fuzz.ratio('fuzzba*l', 'fuXxball', options))
-//利用wildcards:將字元or符號設置為通配
+//利用wildcards:將字元or符號設置為通用字
 
 
 //Fuzzy Dedupe

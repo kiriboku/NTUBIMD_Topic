@@ -1,8 +1,8 @@
 // 引用linebot SDK
 var linebot = require('linebot');
 const { addAbortSignal } = require('stream');
-let index2 = require('./js/index2');
-let index = require('./js/index');
+let follow_watch_two = require('./js/follow_watch_two');
+let follow_watch_one = require('./js/follow_watch_one');
 
 
 // 用於辨識Line Channel的資訊
@@ -80,9 +80,9 @@ function knowQuestion(que) {
 bot.on('message', function (event) {
   if (event.message.text == "關注清單") {
     let t = ""
-    Promise.all([index.show_follow(event.source.userId)])
+    Promise.all([follow_watch_one.show_follow(event.source.userId)])
       .then(([oneSecond]) => {
-        oneSecond.forEach(element => Promise.all([index2.list(element)])
+        oneSecond.forEach(element => Promise.all([follow_watch_two.list(element)])
           .then(([oneSecond]) => {
             t = t + "\n" + oneSecond
           }));
