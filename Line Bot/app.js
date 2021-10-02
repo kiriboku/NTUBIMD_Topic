@@ -1,9 +1,9 @@
 // 引用linebot SDK
-var linebot = require('linebot');
+const linebot = require('linebot');
 const { addAbortSignal } = require('stream');
 let follow_watch_two = require('./js/follow_watch_two');
 let follow_watch_one = require('./js/follow_watch_one');
-
+var flex = require("./js/flex");
 
 // 用於辨識Line Channel的資訊
 var bot = linebot({
@@ -84,7 +84,7 @@ bot.on('message', function (event) {
       .then(([oneSecond]) => {
         oneSecond.forEach(element => Promise.all([follow_watch_two.list(element)])
           .then(([oneSecond]) => {
-            t = t + "\n" + oneSecond
+            t = t + oneSecond
           }));
       })
     setTimeout(() => {
@@ -93,6 +93,11 @@ bot.on('message', function (event) {
         // 當訊息成功回傳後的處理
       })
     }, 2000);
+  }
+  if (event.message.text == "安安") {
+    event.reply(flex.text_message()).then(function (data) {
+      // 當訊息成功回傳後的處理
+    })
   }
   // event.message.text是使用者傳給bot的訊息
   // 準備要回傳的內容
