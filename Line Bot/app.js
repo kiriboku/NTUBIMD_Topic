@@ -1,9 +1,10 @@
 // 引用linebot SDK
 const linebot = require('linebot');
 const { addAbortSignal } = require('stream');
-let follow_watch_two = require('./js/follow_watch_two');
-let follow_watch_one = require('./js/follow_watch_one');
+var follow_watch_two = require('./js/follow_watch_two');
+var follow_watch_one = require('./js/follow_watch_one');
 var flex = require("./js/flex");
+var fuzzball = require('./Fuzzball.js/fuzzball');
 
 // 用於辨識Line Channel的資訊
 var bot = linebot({
@@ -78,6 +79,7 @@ function knowQuestion(que) {
 
 // 當有人傳送訊息給Bot時
 bot.on('message', function (event) {
+  var message = fuzzball.user_question(event.message.text)
   if (event.message.text == "關注清單") {
     let t = ""
     Promise.all([follow_watch_one.show_follow(event.source.userId)])
@@ -99,6 +101,12 @@ bot.on('message', function (event) {
       // 當訊息成功回傳後的處理
     })
   }
+  setTimeout(() => {
+    // 三秒後回傳資料
+    event.reply(message).then(function (data) {
+      // 當訊息成功回傳後的處理
+    })
+  }, 3000);
   // event.message.text是使用者傳給bot的訊息
   // 準備要回傳的內容
   // var answer = knowQuestion(event.message.text)
