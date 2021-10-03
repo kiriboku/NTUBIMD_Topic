@@ -2,7 +2,7 @@ fuzz = require('fuzzball')//require 模組
 
 options = { full_process: false, wildcards: "我想知道" }
 
-function user_question(quest) {
+module.exports.user_question = function user_question(quest) {
     Str_quest = String(quest)
     // var cla_1 = classify_1(Str_quest)
     switch (classify_1(Str_quest)) {
@@ -21,7 +21,7 @@ function user_question(quest) {
         default:
             var classify2 = '沒有符合的條件'
     }
-    console.log(classify2)
+    return classify2
 }
 
 function classify_1(quest) {
@@ -79,6 +79,6 @@ function classify_stock(quest) {
     return (max_text)
 }
 
-user_question("我要知道2603股價")
+
 
 
