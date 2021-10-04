@@ -101,6 +101,20 @@ bot.on('message', function (event) {
       // 當訊息成功回傳後的處理
     })
   }
+  if (event.message.text.substr(0,1) =="+"){
+    let stock = event.message.text.substr(1,4)
+    event.reply("將股票代號："+stock+"加入關注清單").then(function (data) {
+      // 當訊息成功回傳後的處理
+      follow_watch_one.insertData_load(event.source.userId,stock)
+    })
+  }
+  if (event.message.text.substr(0,1) =="-"){
+    let stock = event.message.text.substr(1,4)
+    event.reply("將股票代號："+stock+"從關注清單移除").then(function (data) {
+      // 當訊息成功回傳後的處理
+      follow_watch_one.remove_Data_load(event.source.userId,stock)
+    })
+  }
   setTimeout(() => {
     // 三秒後回傳資料
     event.reply(message).then(function (data) {

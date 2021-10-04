@@ -63,7 +63,7 @@ module.exports.new_user_creat = function new_user_creat(user_id) {
 
 //為第一次加入好友的使用者建立關注清單
 
-function insertData_load(user_id, stock) {
+module.exports.insertData_load = function insertData_load(user_id, stock) {
     conn.query('SELECT * FROM follow_list where user_id = ' + "'" + String(user_id) + "'",
         function (err, results) {
             if (err) throw err;
@@ -100,7 +100,7 @@ function UPDATE(user_id, stock, location) {
 
 //新增關注代號
 
-function remove_Data_load(user_id, stock) {
+module.exports.remove_Data_load = function remove_Data_load(user_id, stock) {
     conn.query('SELECT * FROM follow_list where user_id = ' + "'" + String(user_id) + "'",
         function (err, results) {
             if (err) throw err;
