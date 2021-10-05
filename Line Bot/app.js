@@ -1,6 +1,5 @@
 // 引用linebot SDK
 const linebot = require('linebot');
-const { addAbortSignal } = require('stream');
 var follow_watch_two = require('./js/follow_watch_two');
 var follow_watch_one = require('./js/follow_watch_one');
 var flex = require("./js/flex");
