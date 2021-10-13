@@ -6,17 +6,17 @@ module.exports.user_question = function user_question(quest) {
     Str_quest = String(quest)
     // var cla_1 = classify_1(Str_quest)
     switch (classify_1(Str_quest)) {
-        case '股價':
-            var classify2 = classify_stock(quest)
+        case '交易資料':
+            var classify2 = classify_stock(quest, 1)
             break;
-        case '新聞':
-            var classify2 = classify_news(quest);
+        case '查詢新聞':
+            var classify2 = classify_news(quest, 1);
             break;
-        case '理財':
-            var classify2 = '理財'
+        case '基本知識':
+            var classify2 = classify_kno(quest, 1)
             break;
-        case '財報':
-            var classify2 = '財報'
+        case '公司資料':
+            var classify2 = classify_com(quest, 1)
             break;
         default:
             var classify2 = '沒有符合的條件'
@@ -26,15 +26,15 @@ module.exports.user_question = function user_question(quest) {
 
 function classify_1(quest) {
     Str_quest = String(quest)
-    a = fuzz.ratio("我想知道股價", Str_quest)
-    b = fuzz.ratio("我想知道新聞", Str_quest)
-    c = fuzz.ratio("我想知道理財", Str_quest)
-    d = fuzz.ratio("我想知道財報", Str_quest)
-    let dic = { "股價": a, "新聞": b, "理財": c, "財報": d }//將分數製作成字典
+    a = classify_stock(Str_quest, 0)
+    b = classify_news(Str_quest, 0)
+    c = classify_kno(Str_quest, 0)
+    d = classify_com(Str_quest, 0)
+    let dic = { "交易資料": a, "查詢新聞": b, "基本知識": c, "公司資料": d }//將分數製作成字典
     let keyArr = Object.keys(dic)//將字典轉換成組數
     let max = 0
     let re_classify_1 = ""
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < keyArr.length; i++) {
         if (dic[keyArr[i]] > max) {
             max = dic[keyArr[i]]
         }
@@ -49,36 +49,83 @@ function classify_1(quest) {
     return (re_classify_1)
 }
 
-function classify_news(quest) {
+function classify_news(quest, turn) {
     Str_quest = String(quest)
-    let choices = ["期貨新聞", "台股新聞", "外匯新聞", "房產新聞"]
+    let choices = ["期貨新聞", "台股新聞", "外匯新聞", "房產新聞", "最近的新聞", "股票的正面消息"]
     results = fuzz.extract(Str_quest, choices)//fuzz.extract(query, choices, options);
     let max = 0
     let max_text = 0
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < choices.length; i++) {
         if (results[i][1] > max) {
             max = results[i][1]//比較最大值
             max_text = results[i][0]//取出最大值的字元
         }
     }
-    return (max_text)
+    if (turn == 0) {
+        return (max)
+    } else {
+        return (max_text)
+    }
 }
 
-function classify_stock(quest) {
+function classify_stock(quest, turn) {
     Str_quest = String(quest)
-    let choices = ["2317股價", "2330股價", "2377股價", "2379股價", "2383股價", "1101股價", "2002股價", "2603股價", "2610股價", "9957股價"]
+    let choices = ["台股走勢圖", "2317股價", "台積電股價", "2330股價", "2377股價", "2379股價", "2383股價", "1101股價", "2002股價", "2603股價", "2610股價", "9957股價"]
     results = fuzz.extract(Str_quest, choices)//fuzz.extract(query, choices, options);
     let max = 0
     let max_text = 0
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < choices.length; i++) {
         if (results[i][1] > max) {
             max = results[i][1]//比較最大值
             max_text = results[i][0]//取出最大值的字元
         }
     }
-    return (max_text)
+    if (turn == 0) {
+        return (max)
+    } else {
+        return (max_text)
+    }
 }
 
+function classify_kno(quest, turn) {
+    Str_quest = String(quest)
+    let choices = ["什麼是股票", "什麼是期貨", "什麼是債券", "什麼是ETF", "什麼是K線","什麼是KD線"]
+    results = fuzz.extract(Str_quest, choices)//fuzz.extract(query, choices, options);
+    let max = 0
+    let max_text = 0
+    for (let i = 0; i < choices.length; i++) {
+        if (results[i][1] > max) {
+            max = results[i][1]//比較最大值
+            max_text = results[i][0]//取出最大值的字元
+        }
+    }
+    if (turn == 0) {
+        return (max)
+    } else {
+        return (max_text)
+    }
+}
 
+function classify_com(quest, turn) {
+    Str_quest = String(quest)
+    let choices = ["台積電每股盈餘", "台積電經營能力", "台積電獲利能力"]
+    results = fuzz.extract(Str_quest, choices)//fuzz.extract(query, choices, options);
+    let max = 0
+    let max_text = 0
+    for (let i = 0; i < choices.length; i++) {
+        if (results[i][1] > max) {
+            max = results[i][1]//比較最大值
+            max_text = results[i][0]//取出最大值的字元
+        }
+    }
+    if (turn == 0) {
+        return (max)
+    } else {
+        return (max_text)
+    }
+}
 
+// let choices = ["2317股價", "2330股價", "2377股價", "2379股價", "2383股價", "1101股價", "2002股價", "2603股價", "2610股價", "9957股價","期貨新聞", "台股新聞", "外匯新聞", "房產新聞","關注清單","+","-"]
+// console.log(fuzz.extract("關注清單", choices))
 
+// console.log(user_question("我想了解台積電的每股盈餘"))
