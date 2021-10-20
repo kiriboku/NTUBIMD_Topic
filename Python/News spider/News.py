@@ -41,7 +41,7 @@ def news_tw_stock():#台股新聞
         title_n=title_n+2
         url=url+2
         
-def news_headline():#房產新聞
+def news_headline():#頭條新聞
     url = "https://news.cnyes.com/news/cat/headline";
     tw_stock = requests.get(url)
     tw_stock_1 = BeautifulSoup(tw_stock.text,"html.parser")
@@ -112,6 +112,24 @@ def news_money():#理財新聞
         news_db("money_"+str(i),tw_stock_array[title_n],tw_stock_array[url])
         title_n=title_n+2
         url=url+2
+        
+def news_forex():#外匯新聞
+    url = "https://news.cnyes.com/news/cat/forex";
+    tw_stock = requests.get(url)
+    tw_stock_1 = BeautifulSoup(tw_stock.text,"html.parser")
+    tw_stock_2 = tw_stock_1.find_all(class_ = "_1Zdp",limit = 3)
+    tw_stock_array = []
+    for i in tw_stock_2:
+        tw_stock_array.append(i.get("title"))
+        tw_stock_news_url = "https://news.cnyes.com"
+        tw_stock_array.append(tw_stock_news_url + i.get("href"))
+    print(tw_stock_array)
+    title_n = 0
+    url = 1
+    for i in range(1,4):
+        news_db("forex_"+str(i),tw_stock_array[title_n],tw_stock_array[url])
+        title_n=title_n+2
+        url=url+2
 
 def search_news_db():
     news_tw_stock()
@@ -119,5 +137,36 @@ def search_news_db():
     news_house()
     news_future()
     news_money()
-    
-search_news_db()
+    news_forex()
+
+
+def news_2330():#外匯新聞
+    url = "https://tw.stock.yahoo.com/quote/2330.TW/news";
+    tw_stock = requests.get(url)
+    tw_stock_1 = BeautifulSoup(tw_stock.text,"html.parser")
+    tw_stock_2 = tw_stock_1.find_all(class_ = "Mt(0) Mb(8px)",limit=4)
+    counter = 1
+    tw_stock_array = []
+    for i in tw_stock_2:
+        tw_stock_3 = i.find("a")
+        Url =  tw_stock_3.get("href")
+        Title = tw_stock_3.getText()
+        if counter!=2:
+            tw_stock_array.append(Title)
+            tw_stock_array.append(Url)
+        counter=counter+1
+    print( tw_stock_array)
+    print( tw_stock_array)
+    title_n = 0
+    url = 1
+    for i in range(1,4):
+        news_db("2330_"+str(i),tw_stock_array[title_n],tw_stock_array[url])
+        title_n=title_n+2
+        url=url+2
+
+news_2330()
+
+
+
+
+
