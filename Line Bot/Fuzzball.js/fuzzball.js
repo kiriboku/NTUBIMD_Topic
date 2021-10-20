@@ -51,7 +51,7 @@ function classify_1(quest) {
 
 function classify_news(quest, turn) {
     Str_quest = String(quest)
-    let choices = ["期貨新聞", "台股新聞", "外匯新聞", "房產新聞", "最近的新聞", "股票的正面消息"]
+    let choices = ["期貨新聞", "台股新聞", "外匯新聞", "房產新聞","理財新聞","頭條新聞","最近的新聞","股票消息"]
     results = fuzz.extract(Str_quest, choices)//fuzz.extract(query, choices, options);
     let max = 0
     let max_text = 0

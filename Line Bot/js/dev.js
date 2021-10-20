@@ -7,54 +7,97 @@ const client = new line.Client(config);
 const richmenu = {
     "size": {
         "width": 2500,
-        "height": 843
+        "height": 1686
     },
     "selected": true,
     "name": "Nice richmenu",
-    "chatBarText": "Tap to open",
+    "chatBarText": "點擊開啟選單",
     "areas": [
         // 區塊1：
         {
             "bounds": {
-                "x": 0,
-                "y": 0,
-                "width": 833,
-                "height": 843
+                "x": 160,
+                "y": 920,
+                "width": 660,
+                "height": 600
             },
             "action": {
                 "type": "message",
                 "label": "區塊1",
-                "text": "關於鯊科"
+                "text": "關注清單"
             }
         },
         // 區塊2：
         {
             "bounds": {
-                "x": 834,
-                "y": 0,
-                "width": 833,
-                "height": 843
+                "x": 820,
+                "y": 920,
+                "width": 660,
+                "height": 600
             },
             "action": {
                 "type": "message",
                 "label": "區塊2",
-                "text": "關注清單"
+                "text": "財務狀況"
             }
         },
         // 區塊3：   
         {
             "bounds": {
-                "x": 1667,
-                "y": 0,
-                "width": 833,
-                "height": 843
+                "x": 1480,
+                "y": 920,
+                "width": 660,
+                "height": 600
             },
             "action": {
                 "type": "message",
                 "label": "區塊3",
                 "text": "常見問題"
             }
-        }
+        },
+        //區塊4
+        {
+            "bounds": {
+                "x": 160,
+                "y": 320,
+                "width": 660,
+                "height": 600
+            },
+            "action": {
+                "type": "message",
+                "label": "區塊4",
+                "text": "查詢股票"
+            }
+        },
+        //區塊5
+        {
+            "bounds": {
+                "x": 820,
+                "y": 320,
+                "width": 660,
+                "height": 600
+            },
+            "action": {
+                "type": "message",
+                "label": "區塊5",
+                "text": "理財知識"
+            }
+        },
+        //區塊6
+        {
+            "bounds": {
+                "x": 1480,
+                "y": 320,
+                "width": 660,
+                "height": 600
+            },
+            "action": {
+                "type": "message",
+                "label": "區塊6",
+                "text": "頭條新聞"
+            }
+        },
+        
     ]
 }
 
@@ -62,9 +105,9 @@ const richmenu = {
 //     .then((richMenuId) => console.log(richMenuId))
 //     .catch(err => console.error(err))
 
-const richMenuId = "richmenu-ca5b044de5b41f1cf97b1865dbe1cbb0"
+const richMenuId = "richmenu-77e15993213c452df341d86cdafb75b5"
 const fs = require('fs')
-client.setRichMenuImage(richMenuId, fs.createReadStream('./sharkMenu.png'))
+client.setRichMenuImage(richMenuId, fs.createReadStream('./richMenu.png'))
     .then(res => console.log(res))
     .catch(err => console.error(err))
 
