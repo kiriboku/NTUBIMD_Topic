@@ -140,8 +140,8 @@ def search_news_db():
     news_forex()
 
 
-def news_2330():#外匯新聞
-    url = "https://tw.stock.yahoo.com/quote/2330.TW/news";
+def news_Individual_stocks(stock):#個股新聞-Yahoo
+    url = "https://tw.stock.yahoo.com/quote/"+stock+".TW/news";
     tw_stock = requests.get(url)
     tw_stock_1 = BeautifulSoup(tw_stock.text,"html.parser")
     tw_stock_2 = tw_stock_1.find_all(class_ = "Mt(0) Mb(8px)",limit=4)
@@ -160,13 +160,17 @@ def news_2330():#外匯新聞
     title_n = 0
     url = 1
     for i in range(1,4):
-        news_db("2330_"+str(i),tw_stock_array[title_n],tw_stock_array[url])
+        news_db(stock+"_"+str(i),tw_stock_array[title_n],tw_stock_array[url])
         title_n=title_n+2
         url=url+2
-
-news_2330()
-
-
+        
+def news_stock():#個股新聞清單
+    stock = ["2317","2330","2377","2379","2383","1101","2002","2603","2610"]
+    for i in stock:
+        news_Individual_stocks(i)
+        
+# news_stock()
+search_news_db()
 
 
 
