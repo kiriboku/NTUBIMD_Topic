@@ -18,6 +18,9 @@ module.exports.user_question = function user_question(quest) {
         case '公司資料':
             var classify2 = classify_com(quest, 1)
             break;
+        case '個股新聞':
+            var classify2 = classify_com_news(quest, 1)
+            break;
         default:
             var classify2 = '沒有符合的條件'
     }
@@ -30,7 +33,8 @@ function classify_1(quest) {
     b = classify_news(Str_quest, 0)
     c = classify_kno(Str_quest, 0)
     d = classify_com(Str_quest, 0)
-    let dic = { "交易資料": a, "查詢新聞": b, "基本知識": c, "公司資料": d }//將分數製作成字典
+    e = classify_com_news(Str_quest, 0)
+    let dic = { "交易資料": a, "查詢新聞": b, "基本知識": c, "公司資料": d, "個股新聞": e }//將分數製作成字典
     let keyArr = Object.keys(dic)//將字典轉換成組數
     let max = 0
     let re_classify_1 = ""
@@ -51,7 +55,27 @@ function classify_1(quest) {
 
 function classify_news(quest, turn) {
     Str_quest = String(quest)
-    let choices = ["期貨新聞", "台股新聞", "外匯新聞", "房產新聞","理財新聞","頭條新聞","最近的新聞","股票消息"]
+    let choices = ["期貨新聞", "台股新聞", "外匯新聞", "房產新聞", "理財新聞", "頭條新聞", "最近的新聞", "股票消息"]
+    results = fuzz.extract(Str_quest, choices)//fuzz.extract(query, choices, options);
+    let max = 0
+    let max_text = 0
+    for (let i = 0; i < choices.length; i++) {
+        if (results[i][1] > max) {
+            max = results[i][1]//比較最大值
+            max_text = results[i][0]//取出最大值的字元
+        }
+    }
+    if (turn == 0) {
+        return (max)
+    } else {
+        return (max_text)
+    }
+}
+
+function classify_com_news(quest, turn) {
+    Str_quest = String(quest)
+    let choices = ["2317新聞", "鴻海新聞", "2330新聞", "台積電新聞", "2377新聞", "微星新聞", "2379新聞", "瑞昱新聞"
+        , "2383新聞", "台光電新聞", "1101新聞", "台泥新聞", "2002新聞", "中鋼新聞", "2603新聞", "長榮新聞", "2610新聞", "華航新聞"]
     results = fuzz.extract(Str_quest, choices)//fuzz.extract(query, choices, options);
     let max = 0
     let max_text = 0
@@ -89,7 +113,7 @@ function classify_stock(quest, turn) {
 
 function classify_kno(quest, turn) {
     Str_quest = String(quest)
-    let choices = ["什麼是股票", "什麼是期貨", "什麼是債券", "什麼是ETF", "什麼是K線","什麼是KD線"]
+    let choices = ["什麼是股票", "什麼是期貨", "什麼是債券", "什麼是ETF", "什麼是K線", "什麼是KD線"]
     results = fuzz.extract(Str_quest, choices)//fuzz.extract(query, choices, options);
     let max = 0
     let max_text = 0

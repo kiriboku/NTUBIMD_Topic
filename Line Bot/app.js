@@ -19,6 +19,15 @@ var forex = ["外匯新聞"]
 var headline = ["頭條新聞", "最近的新聞"]
 var money = ["理財新聞"]
 var future = ["期貨新聞"]
+var news_2330 = ["2330新聞","台積電新聞"]
+var news_2317 = ["2317新聞","鴻海新聞"]
+var news_2377 = ["2377新聞","微星新聞"]
+var news_2379 = ["2379新聞","瑞昱新聞"]
+var news_2383 = ["2383新聞","台光電新聞"]
+var news_1101 = ["1101新聞","台泥新聞"]
+var news_2002 = ["2002新聞","中鋼新聞"]
+var news_2603 = ["2603新聞","長榮新聞"]
+var news_2610 = ["2610新聞","華航新聞"]
 
 // 當有人傳送訊息給Bot時
 bot.on('message', function (event) {
@@ -128,6 +137,132 @@ bot.on('message', function (event) {
       setTimeout(() => {
         // 三秒後回傳資料
         event.reply(flex.flex_news_future(News_tw)).then(function (data) {
+          // 當訊息成功回傳後的處理
+        })
+      }, 1000);
+    }
+    else if (news_2330.includes(message) == true) {
+      let News_tw_type = ["2330_1", "2330_2", "2330_3"]
+      let News_tw = []
+      News_tw_type.forEach(element => Promise.all([News.search_News_db(element)])
+        .then(([oneSecond]) => {
+          News_tw = News_tw.concat(oneSecond)
+        }));
+      setTimeout(() => {
+        // 三秒後回傳資料
+        event.reply(flex.flex_news_2330(News_tw)).then(function (data) {
+          // 當訊息成功回傳後的處理
+        })
+      }, 1000);
+    }
+    else if (news_2317.includes(message) == true) {
+      let News_tw_type = ["2317_1", "2317_2", "2317_3"]
+      let News_tw = []
+      News_tw_type.forEach(element => Promise.all([News.search_News_db(element)])
+        .then(([oneSecond]) => {
+          News_tw = News_tw.concat(oneSecond)
+        }));
+      setTimeout(() => {
+        // 三秒後回傳資料
+        event.reply(flex.flex_news_2317(News_tw)).then(function (data) {
+          // 當訊息成功回傳後的處理
+        })
+      }, 1000);
+    }
+    else if (news_2377.includes(message) == true) {
+      let News_tw_type = ["2377_1", "2377_2", "2377_3"]
+      let News_tw = []
+      News_tw_type.forEach(element => Promise.all([News.search_News_db(element)])
+        .then(([oneSecond]) => {
+          News_tw = News_tw.concat(oneSecond)
+        }));
+      setTimeout(() => {
+        // 三秒後回傳資料
+        event.reply(flex.flex_news_2377(News_tw)).then(function (data) {
+          // 當訊息成功回傳後的處理
+        })
+      }, 1000);
+    }
+    else if (news_2379.includes(message) == true) {
+      let News_tw_type = ["2379_1", "2379_2", "2379_3"]
+      let News_tw = []
+      News_tw_type.forEach(element => Promise.all([News.search_News_db(element)])
+        .then(([oneSecond]) => {
+          News_tw = News_tw.concat(oneSecond)
+        }));
+      setTimeout(() => {
+        // 三秒後回傳資料
+        event.reply(flex.flex_news_2379(News_tw)).then(function (data) {
+          // 當訊息成功回傳後的處理
+        })
+      }, 1000);
+    }
+    else if (news_2383.includes(message) == true) {
+      let News_tw_type = ["2383_1", "2383_2", "2383_3"]
+      let News_tw = []
+      News_tw_type.forEach(element => Promise.all([News.search_News_db(element)])
+        .then(([oneSecond]) => {
+          News_tw = News_tw.concat(oneSecond)
+        }));
+      setTimeout(() => {
+        // 三秒後回傳資料
+        event.reply(flex.flex_news_2383(News_tw)).then(function (data) {
+          // 當訊息成功回傳後的處理
+        })
+      }, 1000);
+    }
+    else if (news_1101.includes(message) == true) {
+      let News_tw_type = ["1101_1", "1101_2", "1101_3"]
+      let News_tw = []
+      News_tw_type.forEach(element => Promise.all([News.search_News_db(element)])
+        .then(([oneSecond]) => {
+          News_tw = News_tw.concat(oneSecond)
+        }));
+      setTimeout(() => {
+        // 三秒後回傳資料
+        event.reply(flex.flex_news_1101(News_tw)).then(function (data) {
+          // 當訊息成功回傳後的處理
+        })
+      }, 1000);
+    }
+    else if (news_2002.includes(message) == true) {
+      let News_tw_type = ["2002_1", "2002_2", "2002_3"]
+      let News_tw = []
+      News_tw_type.forEach(element => Promise.all([News.search_News_db(element)])
+        .then(([oneSecond]) => {
+          News_tw = News_tw.concat(oneSecond)
+        }));
+      setTimeout(() => {
+        // 三秒後回傳資料
+        event.reply(flex.flex_news_2002(News_tw)).then(function (data) {
+          // 當訊息成功回傳後的處理
+        })
+      }, 1000);
+    }
+    else if (news_2603.includes(message) == true) {
+      let News_tw_type = ["2603_1", "2603_2", "2603_3"]
+      let News_tw = []
+      News_tw_type.forEach(element => Promise.all([News.search_News_db(element)])
+        .then(([oneSecond]) => {
+          News_tw = News_tw.concat(oneSecond)
+        }));
+      setTimeout(() => {
+        // 三秒後回傳資料
+        event.reply(flex.flex_news_2603(News_tw)).then(function (data) {
+          // 當訊息成功回傳後的處理
+        })
+      }, 1000);
+    }
+    else if (news_2610.includes(message) == true) {
+      let News_tw_type = ["2610_1", "2610_2", "2610_3"]
+      let News_tw = []
+      News_tw_type.forEach(element => Promise.all([News.search_News_db(element)])
+        .then(([oneSecond]) => {
+          News_tw = News_tw.concat(oneSecond)
+        }));
+      setTimeout(() => {
+        // 三秒後回傳資料
+        event.reply(flex.flex_news_2610(News_tw)).then(function (data) {
           // 當訊息成功回傳後的處理
         })
       }, 1000);
