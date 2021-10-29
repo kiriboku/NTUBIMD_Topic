@@ -32,20 +32,20 @@ var news_2610 = ["2610新聞","華航新聞"]
 // 當有人傳送訊息給Bot時
 bot.on('message', function (event) {
   if (event.message.text == "關注清單") {
-    let t = ""
+    let array=[]
     Promise.all([follow_watch_one.show_follow(event.source.userId)])
       .then(([oneSecond]) => {
         oneSecond.forEach(element => Promise.all([follow_watch_two.list(element)])
           .then(([oneSecond]) => {
-            t = t + oneSecond
+            array.push(oneSecond)
           }));
       })
     setTimeout(() => {
       // 三秒後回傳資料
-      event.reply(t).then(function (data) {
+      event.reply(flex.watch_list_1_item(array)).then(function (data) {
         // 當訊息成功回傳後的處理
       })
-    }, 1500);
+    }, 1000);
   } else if (event.message.text.substr(0, 1) == "+") {
     let stock = event.message.text.substr(1, 4)
     event.reply("將股票代號：" + stock + "加入關注清單").then(function (data) {
