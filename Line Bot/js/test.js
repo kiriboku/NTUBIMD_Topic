@@ -6,6 +6,8 @@
 //     }, 1000);
 // })
 
+// const { text } = require("stream/consumers")
+
 // const twoSecond = new Promise((resolve, reject) => {
 //     setTimeout(() => {
 //         // 兩秒後回傳資料
@@ -49,4 +51,16 @@
 //     })
 //   }, 5000);
 
+array = ["1", "2"]
+console.log(array.length)
 
+function ange(array) {
+    switch (array.length) {
+        case 1:
+            return "項目數量1"
+        case 2:
+            return "項目數量2"
+    }
+}
+
+console.log(ange(array))

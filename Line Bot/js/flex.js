@@ -1373,13 +1373,30 @@ module.exports.flex_news_2610 = function flex_news_2610(array) {
   return text
 }
 
-module.exports.watch_list_1_item = function watch_list(array) {
-  let color = 2
-  if(color==1){
-    color_text = "#FF0000"
-  }else{
-    color_text = "#008000"
+function check_color(open, clos) {
+  if (open < clos) {
+    return "#FF0000"
+  } else {
+    return "#008000"
   }
+}
+
+module.exports.check_watch_list_tiem = function check_watch_list_tiem(array) {
+  switch (array.length) {
+    case 1:
+      return watch_list_1_item_t(array)
+    case 2:
+      return watch_list_2_item_t(array)
+    case 3:
+      return watch_list_3_item_t(array)
+    case 4:
+      return watch_list_4_item_t(array)
+    case 5:
+      return watch_list_5_item_t(array)
+  }
+}
+
+function watch_list_1_item_t(array) {
   let text = {
     "type": "flex",
     "altText": "this is a flex message",
@@ -1406,7 +1423,7 @@ module.exports.watch_list_1_item = function watch_list(array) {
                 "contents": [
                   {
                     "type": "text",
-                    "text": array[0][2],
+                    "text": array[0][2],//公司名稱
                     "size": "33px",
                     "weight": "bold",
                     "align": "center"
@@ -1422,7 +1439,7 @@ module.exports.watch_list_1_item = function watch_list(array) {
                 "contents": [
                   {
                     "type": "text",
-                    "text": array[0][3],
+                    "text": array[0][3],//成交價
                     "size": "18px",
                     "weight": "bold"
                   }
@@ -1437,7 +1454,7 @@ module.exports.watch_list_1_item = function watch_list(array) {
                 "contents": [
                   {
                     "type": "text",
-                    "text": array[0][4],
+                    "text": array[0][4],//開盤價
                     "size": "18px",
                     "weight": "bold"
                   }
@@ -1452,7 +1469,7 @@ module.exports.watch_list_1_item = function watch_list(array) {
                 "contents": [
                   {
                     "type": "text",
-                    "text": array[0][5],
+                    "text": array[0][5],//最高價
                     "size": "18px",
                     "weight": "bold"
                   }
@@ -1467,7 +1484,7 @@ module.exports.watch_list_1_item = function watch_list(array) {
                 "contents": [
                   {
                     "type": "text",
-                    "text": array[0][6],
+                    "text": array[0][6],//最低價
                     "size": "18px",
                     "weight": "bold"
                   }
@@ -1482,7 +1499,7 @@ module.exports.watch_list_1_item = function watch_list(array) {
                 "contents": [
                   {
                     "type": "text",
-                    "text": array[0][7],
+                    "text": array[0][7],//均價
                     "size": "18px",
                     "weight": "bold"
                   }
@@ -1497,7 +1514,7 @@ module.exports.watch_list_1_item = function watch_list(array) {
                 "contents": [
                   {
                     "type": "text",
-                    "text": array[0][8],
+                    "text": array[0][8],//昨收
                     "size": "18px",
                     "weight": "bold"
                   }
@@ -1512,10 +1529,10 @@ module.exports.watch_list_1_item = function watch_list(array) {
                 "contents": [
                   {
                     "type": "text",
-                    "text": array[0][9],
+                    "text": array[0][9],//漲跌幅
                     "size": "18px",
                     "weight": "bold",
-                    "color": color_text
+                    "color": check_color(array[0][4], array[0][3])
                   }
                 ],
                 "offsetTop": "192px",
@@ -1528,9 +1545,10 @@ module.exports.watch_list_1_item = function watch_list(array) {
                 "contents": [
                   {
                     "type": "text",
-                    "text": array[0][10],
+                    "text": array[0][10],//漲跌
                     "size": "18px",
-                    "weight": "bold"
+                    "weight": "bold",
+                    "color": check_color(array[0][4], array[0][3])
                   }
                 ],
                 "offsetTop": "230px",
@@ -1543,7 +1561,7 @@ module.exports.watch_list_1_item = function watch_list(array) {
                 "contents": [
                   {
                     "type": "text",
-                    "text": array[0][11],
+                    "text": array[0][11],//總量
                     "size": "18px",
                     "weight": "bold"
                   }
@@ -1558,7 +1576,7 @@ module.exports.watch_list_1_item = function watch_list(array) {
                 "contents": [
                   {
                     "type": "text",
-                    "text": array[0][12],
+                    "text": array[0][12],//振幅
                     "size": "18px",
                     "weight": "bold"
                   }
@@ -1569,23 +1587,24 @@ module.exports.watch_list_1_item = function watch_list(array) {
               },
               {
                 "type": "box",
-                "layout": "vertical",
+                "layout": "horizontal",
                 "contents": [
                   {
                     "type": "text",
-                    "text": array[0][2]+"新聞",
+                    "text": array[0][2] + "新聞",
                     "size": "25px",
                     "weight": "bold",
                     "action": {
                       "type": "message",
                       "label": "action",
-                      "text": "台積電新聞"
-                    }
+                      "text": array[0][2] + "新聞"//新聞
+                    },
+                    "align": "center"
                   }
                 ],
                 "offsetTop": "354px",
-                "offsetStart": "90px",
-                "position": "absolute"
+                "position": "absolute",
+                "width": "100%"
               },
               {
                 "type": "box",
@@ -1593,7 +1612,7 @@ module.exports.watch_list_1_item = function watch_list(array) {
                 "contents": [
                   {
                     "type": "text",
-                    "text": array[0][0],
+                    "text": array[0][0],//日期
                     "size": "15px",
                     "weight": "bold"
                   }
@@ -1611,3 +1630,3160 @@ module.exports.watch_list_1_item = function watch_list(array) {
   }
   return text
 }
+function watch_list_2_item_t(array) {
+  let text = {
+    "type": "flex",
+    "altText": "this is a flex message",
+    "contents": {
+      "type": "carousel",
+      "contents": [
+        {
+          "type": "bubble",
+          "body": {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "image",
+                "url": "https://lh3.googleusercontent.com/61cZkoXqIHFDRJM_6rSHW7lTqHEeAOcV1-E1Ri59s94tUlcMcYC4pZliiqp_pfwrM3lBfZrAck3JC-wtbHNcoRCJeLERyieXZ4qmmPUGtFEX48PEHQiwZCVDe9M_3E8R9h-2eWiGDtkQA5HLfimLsZH8e2vtrH0iYW5jg8IYWvG2MOILJRGwJtH9Q2oV-6dCBmShKozjVTb514qWLplfldxlxtS_Rbfhbm7IuEdBHtY76ZbT7c1HzV2vr4HaHjXgxc7nlS_y-PewqL5B4CDgAkKCHxQm-YeKnuQc3-rsLIqBWtv5sRK1I1fny7M74iFSf37VWJN0nm9jKY2bm-ago2w7v7PNEuN8YVFa4iAVWI1RcnJ-vveAL9478n9YQ63_uBB7JUjKkEe6FbaCpMLQJekJwDlMUO_aLcwNFnCCKDilQ7Eu7NmlxuwW7ockkA8KTijjgeH7PTFMp2bWdp-1ByQTGaoTYWMICP50rD2AahmsadMN19heZrVbyT46ujXgKy7mRuwXvrO6oj9Nbgb5WFtIiiYu3Nttuw47aMmbv-w8x9CQHKJnmzQzLej3Ceb1_v3t_tA7ek5AaAriU5UK46Lq2b4jGcRRMj7r1lzMQvkU1l3E67Aa2hr9yJ2etYGxvBoYQDpuNdBOT_JhtiWGB5mKCDZREt1JksY_VeWugXUFfnWip_dXEPl9iBbg5KIywHSRhr_mvBlSw8ws6kTeWd_E=w662-h882-no?authuser=0",
+                "size": "full",
+                "aspectMode": "cover",
+                "aspectRatio": "2:3",
+                "gravity": "top"
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[0][2],//公司名稱
+                    "size": "33px",
+                    "weight": "bold",
+                    "align": "center"
+                  }
+                ],
+                "position": "absolute",
+                "offsetTop": "93px",
+                "width": "100%"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[0][3],//成交價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "152px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[0][4],//開盤價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "190px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[0][5],//最高價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "230px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[0][6],//最低價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "268px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[0][7],//均價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "308px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[0][8],//昨收
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "152px",
+                "offsetStart": "205px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[0][9],//漲跌幅
+                    "size": "18px",
+                    "weight": "bold",
+                    "color": check_color(array[0][4], array[0][3])
+                  }
+                ],
+                "offsetTop": "192px",
+                "offsetStart": "225px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[0][10],//漲跌
+                    "size": "18px",
+                    "weight": "bold",
+                    "color": check_color(array[0][4], array[0][3])
+                  }
+                ],
+                "offsetTop": "230px",
+                "offsetStart": "205px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[0][11],//總量
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "268px",
+                "offsetStart": "205px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[0][12],//振幅
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "308px",
+                "offsetStart": "205px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[0][2] + "新聞",
+                    "size": "25px",
+                    "weight": "bold",
+                    "action": {
+                      "type": "message",
+                      "label": "action",
+                      "text": array[0][2] + "新聞"//新聞
+                    },
+                    "align": "center"
+                  }
+                ],
+                "offsetTop": "354px",
+                "position": "absolute",
+                "width": "100%"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[0][0],//日期
+                    "size": "15px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "400px",
+                "offsetStart": "200px",
+                "position": "absolute"
+              }
+            ],
+            "paddingAll": "0px"
+          }
+        },
+        {
+          "type": "bubble",
+          "body": {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "image",
+                "url": "https://lh3.googleusercontent.com/61cZkoXqIHFDRJM_6rSHW7lTqHEeAOcV1-E1Ri59s94tUlcMcYC4pZliiqp_pfwrM3lBfZrAck3JC-wtbHNcoRCJeLERyieXZ4qmmPUGtFEX48PEHQiwZCVDe9M_3E8R9h-2eWiGDtkQA5HLfimLsZH8e2vtrH0iYW5jg8IYWvG2MOILJRGwJtH9Q2oV-6dCBmShKozjVTb514qWLplfldxlxtS_Rbfhbm7IuEdBHtY76ZbT7c1HzV2vr4HaHjXgxc7nlS_y-PewqL5B4CDgAkKCHxQm-YeKnuQc3-rsLIqBWtv5sRK1I1fny7M74iFSf37VWJN0nm9jKY2bm-ago2w7v7PNEuN8YVFa4iAVWI1RcnJ-vveAL9478n9YQ63_uBB7JUjKkEe6FbaCpMLQJekJwDlMUO_aLcwNFnCCKDilQ7Eu7NmlxuwW7ockkA8KTijjgeH7PTFMp2bWdp-1ByQTGaoTYWMICP50rD2AahmsadMN19heZrVbyT46ujXgKy7mRuwXvrO6oj9Nbgb5WFtIiiYu3Nttuw47aMmbv-w8x9CQHKJnmzQzLej3Ceb1_v3t_tA7ek5AaAriU5UK46Lq2b4jGcRRMj7r1lzMQvkU1l3E67Aa2hr9yJ2etYGxvBoYQDpuNdBOT_JhtiWGB5mKCDZREt1JksY_VeWugXUFfnWip_dXEPl9iBbg5KIywHSRhr_mvBlSw8ws6kTeWd_E=w662-h882-no?authuser=0",
+                "size": "full",
+                "aspectMode": "cover",
+                "aspectRatio": "2:3",
+                "gravity": "top"
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[1][2],//公司名稱
+                    "size": "33px",
+                    "weight": "bold",
+                    "align": "center"
+                  }
+                ],
+                "position": "absolute",
+                "offsetTop": "93px",
+                "width": "100%"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[1][3],//成交價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "152px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[1][4],//開盤價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "190px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[1][5],//最高價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "230px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[1][6],//最低價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "268px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[1][7],//均價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "308px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[1][8],//昨收
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "152px",
+                "offsetStart": "205px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[1][9],//漲跌幅
+                    "size": "18px",
+                    "weight": "bold",
+                    "color": check_color(array[1][4], array[1][3])
+                  }
+                ],
+                "offsetTop": "192px",
+                "offsetStart": "225px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[1][10],//漲跌
+                    "size": "18px",
+                    "weight": "bold",
+                    "color": check_color(array[1][4], array[1][3])
+                  }
+                ],
+                "offsetTop": "230px",
+                "offsetStart": "205px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[1][11],//總量
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "268px",
+                "offsetStart": "205px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[1][12],//振幅
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "308px",
+                "offsetStart": "205px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[1][2] + "新聞",
+                    "size": "25px",
+                    "weight": "bold",
+                    "action": {
+                      "type": "message",
+                      "label": "action",
+                      "text": array[1][2] + "新聞"//新聞
+                    },
+                    "align": "center"
+                  }
+                ],
+                "offsetTop": "354px",
+                "position": "absolute",
+                "width": "100%"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[1][0],//日期
+                    "size": "15px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "400px",
+                "offsetStart": "200px",
+                "position": "absolute"
+              }
+            ],
+            "paddingAll": "0px"
+          }
+        }
+      ]
+    }
+  }
+  return text
+}
+function watch_list_3_item_t(array) {
+  let text = {
+    "type": "flex",
+    "altText": "this is a flex message",
+    "contents": {
+      "type": "carousel",
+      "contents": [
+        {
+          "type": "bubble",
+          "body": {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "image",
+                "url": "https://lh3.googleusercontent.com/61cZkoXqIHFDRJM_6rSHW7lTqHEeAOcV1-E1Ri59s94tUlcMcYC4pZliiqp_pfwrM3lBfZrAck3JC-wtbHNcoRCJeLERyieXZ4qmmPUGtFEX48PEHQiwZCVDe9M_3E8R9h-2eWiGDtkQA5HLfimLsZH8e2vtrH0iYW5jg8IYWvG2MOILJRGwJtH9Q2oV-6dCBmShKozjVTb514qWLplfldxlxtS_Rbfhbm7IuEdBHtY76ZbT7c1HzV2vr4HaHjXgxc7nlS_y-PewqL5B4CDgAkKCHxQm-YeKnuQc3-rsLIqBWtv5sRK1I1fny7M74iFSf37VWJN0nm9jKY2bm-ago2w7v7PNEuN8YVFa4iAVWI1RcnJ-vveAL9478n9YQ63_uBB7JUjKkEe6FbaCpMLQJekJwDlMUO_aLcwNFnCCKDilQ7Eu7NmlxuwW7ockkA8KTijjgeH7PTFMp2bWdp-1ByQTGaoTYWMICP50rD2AahmsadMN19heZrVbyT46ujXgKy7mRuwXvrO6oj9Nbgb5WFtIiiYu3Nttuw47aMmbv-w8x9CQHKJnmzQzLej3Ceb1_v3t_tA7ek5AaAriU5UK46Lq2b4jGcRRMj7r1lzMQvkU1l3E67Aa2hr9yJ2etYGxvBoYQDpuNdBOT_JhtiWGB5mKCDZREt1JksY_VeWugXUFfnWip_dXEPl9iBbg5KIywHSRhr_mvBlSw8ws6kTeWd_E=w662-h882-no?authuser=0",
+                "size": "full",
+                "aspectMode": "cover",
+                "aspectRatio": "2:3",
+                "gravity": "top"
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[0][2],//公司名稱
+                    "size": "33px",
+                    "weight": "bold",
+                    "align": "center"
+                  }
+                ],
+                "position": "absolute",
+                "offsetTop": "93px",
+                "width": "100%"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[0][3],//成交價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "152px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[0][4],//開盤價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "190px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[0][5],//最高價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "230px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[0][6],//最低價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "268px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[0][7],//均價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "308px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[0][8],//昨收
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "152px",
+                "offsetStart": "205px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[0][9],//漲跌幅
+                    "size": "18px",
+                    "weight": "bold",
+                    "color": check_color(array[0][4], array[0][3])
+                  }
+                ],
+                "offsetTop": "192px",
+                "offsetStart": "225px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[0][10],//漲跌
+                    "size": "18px",
+                    "weight": "bold",
+                    "color": check_color(array[0][4], array[0][3])
+                  }
+                ],
+                "offsetTop": "230px",
+                "offsetStart": "205px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[0][11],//總量
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "268px",
+                "offsetStart": "205px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[0][12],//振幅
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "308px",
+                "offsetStart": "205px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[0][2] + "新聞",
+                    "size": "25px",
+                    "weight": "bold",
+                    "action": {
+                      "type": "message",
+                      "label": "action",
+                      "text": array[0][2] + "新聞"//新聞
+                    },
+                    "align": "center"
+                  }
+                ],
+                "offsetTop": "354px",
+                "position": "absolute",
+                "width": "100%"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[0][0],//日期
+                    "size": "15px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "400px",
+                "offsetStart": "200px",
+                "position": "absolute"
+              }
+            ],
+            "paddingAll": "0px"
+          }
+        },
+        {
+          "type": "bubble",
+          "body": {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "image",
+                "url": "https://lh3.googleusercontent.com/61cZkoXqIHFDRJM_6rSHW7lTqHEeAOcV1-E1Ri59s94tUlcMcYC4pZliiqp_pfwrM3lBfZrAck3JC-wtbHNcoRCJeLERyieXZ4qmmPUGtFEX48PEHQiwZCVDe9M_3E8R9h-2eWiGDtkQA5HLfimLsZH8e2vtrH0iYW5jg8IYWvG2MOILJRGwJtH9Q2oV-6dCBmShKozjVTb514qWLplfldxlxtS_Rbfhbm7IuEdBHtY76ZbT7c1HzV2vr4HaHjXgxc7nlS_y-PewqL5B4CDgAkKCHxQm-YeKnuQc3-rsLIqBWtv5sRK1I1fny7M74iFSf37VWJN0nm9jKY2bm-ago2w7v7PNEuN8YVFa4iAVWI1RcnJ-vveAL9478n9YQ63_uBB7JUjKkEe6FbaCpMLQJekJwDlMUO_aLcwNFnCCKDilQ7Eu7NmlxuwW7ockkA8KTijjgeH7PTFMp2bWdp-1ByQTGaoTYWMICP50rD2AahmsadMN19heZrVbyT46ujXgKy7mRuwXvrO6oj9Nbgb5WFtIiiYu3Nttuw47aMmbv-w8x9CQHKJnmzQzLej3Ceb1_v3t_tA7ek5AaAriU5UK46Lq2b4jGcRRMj7r1lzMQvkU1l3E67Aa2hr9yJ2etYGxvBoYQDpuNdBOT_JhtiWGB5mKCDZREt1JksY_VeWugXUFfnWip_dXEPl9iBbg5KIywHSRhr_mvBlSw8ws6kTeWd_E=w662-h882-no?authuser=0",
+                "size": "full",
+                "aspectMode": "cover",
+                "aspectRatio": "2:3",
+                "gravity": "top"
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[1][2],//公司名稱
+                    "size": "33px",
+                    "weight": "bold",
+                    "align": "center"
+                  }
+                ],
+                "position": "absolute",
+                "offsetTop": "93px",
+                "width": "100%"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[1][3],//成交價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "152px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[1][4],//開盤價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "190px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[1][5],//最高價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "230px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[1][6],//最低價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "268px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[1][7],//均價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "308px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[1][8],//昨收
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "152px",
+                "offsetStart": "205px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[1][9],//漲跌幅
+                    "size": "18px",
+                    "weight": "bold",
+                    "color": check_color(array[1][4], array[1][3])
+                  }
+                ],
+                "offsetTop": "192px",
+                "offsetStart": "225px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[1][10],//漲跌
+                    "size": "18px",
+                    "weight": "bold",
+                    "color": check_color(array[1][4], array[1][3])
+                  }
+                ],
+                "offsetTop": "230px",
+                "offsetStart": "205px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[1][11],//總量
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "268px",
+                "offsetStart": "205px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[1][12],//振幅
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "308px",
+                "offsetStart": "205px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[1][2] + "新聞",
+                    "size": "25px",
+                    "weight": "bold",
+                    "action": {
+                      "type": "message",
+                      "label": "action",
+                      "text": array[1][2] + "新聞"//新聞
+                    },
+                    "align": "center"
+                  }
+                ],
+                "offsetTop": "354px",
+                "position": "absolute",
+                "width": "100%"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[1][0],//日期
+                    "size": "15px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "400px",
+                "offsetStart": "200px",
+                "position": "absolute"
+              }
+            ],
+            "paddingAll": "0px"
+          }
+        },
+        {
+          "type": "bubble",
+          "body": {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "image",
+                "url": "https://lh3.googleusercontent.com/61cZkoXqIHFDRJM_6rSHW7lTqHEeAOcV1-E1Ri59s94tUlcMcYC4pZliiqp_pfwrM3lBfZrAck3JC-wtbHNcoRCJeLERyieXZ4qmmPUGtFEX48PEHQiwZCVDe9M_3E8R9h-2eWiGDtkQA5HLfimLsZH8e2vtrH0iYW5jg8IYWvG2MOILJRGwJtH9Q2oV-6dCBmShKozjVTb514qWLplfldxlxtS_Rbfhbm7IuEdBHtY76ZbT7c1HzV2vr4HaHjXgxc7nlS_y-PewqL5B4CDgAkKCHxQm-YeKnuQc3-rsLIqBWtv5sRK1I1fny7M74iFSf37VWJN0nm9jKY2bm-ago2w7v7PNEuN8YVFa4iAVWI1RcnJ-vveAL9478n9YQ63_uBB7JUjKkEe6FbaCpMLQJekJwDlMUO_aLcwNFnCCKDilQ7Eu7NmlxuwW7ockkA8KTijjgeH7PTFMp2bWdp-1ByQTGaoTYWMICP50rD2AahmsadMN19heZrVbyT46ujXgKy7mRuwXvrO6oj9Nbgb5WFtIiiYu3Nttuw47aMmbv-w8x9CQHKJnmzQzLej3Ceb1_v3t_tA7ek5AaAriU5UK46Lq2b4jGcRRMj7r1lzMQvkU1l3E67Aa2hr9yJ2etYGxvBoYQDpuNdBOT_JhtiWGB5mKCDZREt1JksY_VeWugXUFfnWip_dXEPl9iBbg5KIywHSRhr_mvBlSw8ws6kTeWd_E=w662-h882-no?authuser=0",
+                "size": "full",
+                "aspectMode": "cover",
+                "aspectRatio": "2:3",
+                "gravity": "top"
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[2][2],//公司名稱
+                    "size": "33px",
+                    "weight": "bold",
+                    "align": "center"
+                  }
+                ],
+                "position": "absolute",
+                "offsetTop": "93px",
+                "width": "100%"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[2][3],//成交價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "152px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[2][4],//開盤價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "190px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[2][5],//最高價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "230px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[2][6],//最低價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "268px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[2][7],//均價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "308px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[2][8],//昨收
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "152px",
+                "offsetStart": "205px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[2][9],//漲跌幅
+                    "size": "18px",
+                    "weight": "bold",
+                    "color": check_color(array[2][4], array[2][3])
+                  }
+                ],
+                "offsetTop": "192px",
+                "offsetStart": "225px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[2][10],//漲跌
+                    "size": "18px",
+                    "weight": "bold",
+                    "color": check_color(array[2][4], array[2][3])
+                  }
+                ],
+                "offsetTop": "230px",
+                "offsetStart": "205px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[2][11],//總量
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "268px",
+                "offsetStart": "205px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[2][12],//振幅
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "308px",
+                "offsetStart": "205px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[2][2] + "新聞",
+                    "size": "25px",
+                    "weight": "bold",
+                    "action": {
+                      "type": "message",
+                      "label": "action",
+                      "text": array[2][2] + "新聞"//新聞
+                    },
+                    "align": "center"
+                  }
+                ],
+                "offsetTop": "354px",
+                "position": "absolute",
+                "width": "100%"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[2][0],//日期
+                    "size": "15px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "400px",
+                "offsetStart": "200px",
+                "position": "absolute"
+              }
+            ],
+            "paddingAll": "0px"
+          }
+        }
+      ]
+    }
+  }
+  return text
+}
+function watch_list_4_item_t(array) {
+  let text = {
+    "type": "flex",
+    "altText": "this is a flex message",
+    "contents": {
+      "type": "carousel",
+      "contents": [
+        {
+          "type": "bubble",
+          "body": {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "image",
+                "url": "https://lh3.googleusercontent.com/61cZkoXqIHFDRJM_6rSHW7lTqHEeAOcV1-E1Ri59s94tUlcMcYC4pZliiqp_pfwrM3lBfZrAck3JC-wtbHNcoRCJeLERyieXZ4qmmPUGtFEX48PEHQiwZCVDe9M_3E8R9h-2eWiGDtkQA5HLfimLsZH8e2vtrH0iYW5jg8IYWvG2MOILJRGwJtH9Q2oV-6dCBmShKozjVTb514qWLplfldxlxtS_Rbfhbm7IuEdBHtY76ZbT7c1HzV2vr4HaHjXgxc7nlS_y-PewqL5B4CDgAkKCHxQm-YeKnuQc3-rsLIqBWtv5sRK1I1fny7M74iFSf37VWJN0nm9jKY2bm-ago2w7v7PNEuN8YVFa4iAVWI1RcnJ-vveAL9478n9YQ63_uBB7JUjKkEe6FbaCpMLQJekJwDlMUO_aLcwNFnCCKDilQ7Eu7NmlxuwW7ockkA8KTijjgeH7PTFMp2bWdp-1ByQTGaoTYWMICP50rD2AahmsadMN19heZrVbyT46ujXgKy7mRuwXvrO6oj9Nbgb5WFtIiiYu3Nttuw47aMmbv-w8x9CQHKJnmzQzLej3Ceb1_v3t_tA7ek5AaAriU5UK46Lq2b4jGcRRMj7r1lzMQvkU1l3E67Aa2hr9yJ2etYGxvBoYQDpuNdBOT_JhtiWGB5mKCDZREt1JksY_VeWugXUFfnWip_dXEPl9iBbg5KIywHSRhr_mvBlSw8ws6kTeWd_E=w662-h882-no?authuser=0",
+                "size": "full",
+                "aspectMode": "cover",
+                "aspectRatio": "2:3",
+                "gravity": "top"
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[0][2],//公司名稱
+                    "size": "33px",
+                    "weight": "bold",
+                    "align": "center"
+                  }
+                ],
+                "position": "absolute",
+                "offsetTop": "93px",
+                "width": "100%"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[0][3],//成交價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "152px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[0][4],//開盤價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "190px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[0][5],//最高價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "230px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[0][6],//最低價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "268px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[0][7],//均價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "308px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[0][8],//昨收
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "152px",
+                "offsetStart": "205px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[0][9],//漲跌幅
+                    "size": "18px",
+                    "weight": "bold",
+                    "color": check_color(array[0][4], array[0][3])
+                  }
+                ],
+                "offsetTop": "192px",
+                "offsetStart": "225px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[0][10],//漲跌
+                    "size": "18px",
+                    "weight": "bold",
+                    "color": check_color(array[0][4], array[0][3])
+                  }
+                ],
+                "offsetTop": "230px",
+                "offsetStart": "205px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[0][11],//總量
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "268px",
+                "offsetStart": "205px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[0][12],//振幅
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "308px",
+                "offsetStart": "205px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[0][2] + "新聞",
+                    "size": "25px",
+                    "weight": "bold",
+                    "action": {
+                      "type": "message",
+                      "label": "action",
+                      "text": array[0][2] + "新聞"//新聞
+                    },
+                    "align": "center"
+                  }
+                ],
+                "offsetTop": "354px",
+                "position": "absolute",
+                "width": "100%"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[0][0],//日期
+                    "size": "15px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "400px",
+                "offsetStart": "200px",
+                "position": "absolute"
+              }
+            ],
+            "paddingAll": "0px"
+          }
+        },
+        {
+          "type": "bubble",
+          "body": {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "image",
+                "url": "https://lh3.googleusercontent.com/61cZkoXqIHFDRJM_6rSHW7lTqHEeAOcV1-E1Ri59s94tUlcMcYC4pZliiqp_pfwrM3lBfZrAck3JC-wtbHNcoRCJeLERyieXZ4qmmPUGtFEX48PEHQiwZCVDe9M_3E8R9h-2eWiGDtkQA5HLfimLsZH8e2vtrH0iYW5jg8IYWvG2MOILJRGwJtH9Q2oV-6dCBmShKozjVTb514qWLplfldxlxtS_Rbfhbm7IuEdBHtY76ZbT7c1HzV2vr4HaHjXgxc7nlS_y-PewqL5B4CDgAkKCHxQm-YeKnuQc3-rsLIqBWtv5sRK1I1fny7M74iFSf37VWJN0nm9jKY2bm-ago2w7v7PNEuN8YVFa4iAVWI1RcnJ-vveAL9478n9YQ63_uBB7JUjKkEe6FbaCpMLQJekJwDlMUO_aLcwNFnCCKDilQ7Eu7NmlxuwW7ockkA8KTijjgeH7PTFMp2bWdp-1ByQTGaoTYWMICP50rD2AahmsadMN19heZrVbyT46ujXgKy7mRuwXvrO6oj9Nbgb5WFtIiiYu3Nttuw47aMmbv-w8x9CQHKJnmzQzLej3Ceb1_v3t_tA7ek5AaAriU5UK46Lq2b4jGcRRMj7r1lzMQvkU1l3E67Aa2hr9yJ2etYGxvBoYQDpuNdBOT_JhtiWGB5mKCDZREt1JksY_VeWugXUFfnWip_dXEPl9iBbg5KIywHSRhr_mvBlSw8ws6kTeWd_E=w662-h882-no?authuser=0",
+                "size": "full",
+                "aspectMode": "cover",
+                "aspectRatio": "2:3",
+                "gravity": "top"
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[1][2],//公司名稱
+                    "size": "33px",
+                    "weight": "bold",
+                    "align": "center"
+                  }
+                ],
+                "position": "absolute",
+                "offsetTop": "93px",
+                "width": "100%"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[1][3],//成交價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "152px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[1][4],//開盤價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "190px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[1][5],//最高價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "230px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[1][6],//最低價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "268px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[1][7],//均價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "308px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[1][8],//昨收
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "152px",
+                "offsetStart": "205px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[1][9],//漲跌幅
+                    "size": "18px",
+                    "weight": "bold",
+                    "color": check_color(array[1][4], array[1][3])
+                  }
+                ],
+                "offsetTop": "192px",
+                "offsetStart": "225px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[1][10],//漲跌
+                    "size": "18px",
+                    "weight": "bold",
+                    "color": check_color(array[1][4], array[1][3])
+                  }
+                ],
+                "offsetTop": "230px",
+                "offsetStart": "205px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[1][11],//總量
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "268px",
+                "offsetStart": "205px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[1][12],//振幅
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "308px",
+                "offsetStart": "205px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[1][2] + "新聞",
+                    "size": "25px",
+                    "weight": "bold",
+                    "action": {
+                      "type": "message",
+                      "label": "action",
+                      "text": array[1][2] + "新聞"//新聞
+                    },
+                    "align": "center"
+                  }
+                ],
+                "offsetTop": "354px",
+                "position": "absolute",
+                "width": "100%"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[1][0],//日期
+                    "size": "15px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "400px",
+                "offsetStart": "200px",
+                "position": "absolute"
+              }
+            ],
+            "paddingAll": "0px"
+          }
+        },
+        {
+          "type": "bubble",
+          "body": {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "image",
+                "url": "https://lh3.googleusercontent.com/61cZkoXqIHFDRJM_6rSHW7lTqHEeAOcV1-E1Ri59s94tUlcMcYC4pZliiqp_pfwrM3lBfZrAck3JC-wtbHNcoRCJeLERyieXZ4qmmPUGtFEX48PEHQiwZCVDe9M_3E8R9h-2eWiGDtkQA5HLfimLsZH8e2vtrH0iYW5jg8IYWvG2MOILJRGwJtH9Q2oV-6dCBmShKozjVTb514qWLplfldxlxtS_Rbfhbm7IuEdBHtY76ZbT7c1HzV2vr4HaHjXgxc7nlS_y-PewqL5B4CDgAkKCHxQm-YeKnuQc3-rsLIqBWtv5sRK1I1fny7M74iFSf37VWJN0nm9jKY2bm-ago2w7v7PNEuN8YVFa4iAVWI1RcnJ-vveAL9478n9YQ63_uBB7JUjKkEe6FbaCpMLQJekJwDlMUO_aLcwNFnCCKDilQ7Eu7NmlxuwW7ockkA8KTijjgeH7PTFMp2bWdp-1ByQTGaoTYWMICP50rD2AahmsadMN19heZrVbyT46ujXgKy7mRuwXvrO6oj9Nbgb5WFtIiiYu3Nttuw47aMmbv-w8x9CQHKJnmzQzLej3Ceb1_v3t_tA7ek5AaAriU5UK46Lq2b4jGcRRMj7r1lzMQvkU1l3E67Aa2hr9yJ2etYGxvBoYQDpuNdBOT_JhtiWGB5mKCDZREt1JksY_VeWugXUFfnWip_dXEPl9iBbg5KIywHSRhr_mvBlSw8ws6kTeWd_E=w662-h882-no?authuser=0",
+                "size": "full",
+                "aspectMode": "cover",
+                "aspectRatio": "2:3",
+                "gravity": "top"
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[2][2],//公司名稱
+                    "size": "33px",
+                    "weight": "bold",
+                    "align": "center"
+                  }
+                ],
+                "position": "absolute",
+                "offsetTop": "93px",
+                "width": "100%"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[2][3],//成交價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "152px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[2][4],//開盤價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "190px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[2][5],//最高價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "230px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[2][6],//最低價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "268px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[2][7],//均價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "308px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[2][8],//昨收
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "152px",
+                "offsetStart": "205px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[2][9],//漲跌幅
+                    "size": "18px",
+                    "weight": "bold",
+                    "color": check_color(array[2][4], array[2][3])
+                  }
+                ],
+                "offsetTop": "192px",
+                "offsetStart": "225px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[2][10],//漲跌
+                    "size": "18px",
+                    "weight": "bold",
+                    "color": check_color(array[2][4], array[2][3])
+                  }
+                ],
+                "offsetTop": "230px",
+                "offsetStart": "205px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[2][11],//總量
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "268px",
+                "offsetStart": "205px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[2][12],//振幅
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "308px",
+                "offsetStart": "205px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[2][2] + "新聞",
+                    "size": "25px",
+                    "weight": "bold",
+                    "action": {
+                      "type": "message",
+                      "label": "action",
+                      "text": array[2][2] + "新聞"//新聞
+                    },
+                    "align": "center"
+                  }
+                ],
+                "offsetTop": "354px",
+                "position": "absolute",
+                "width": "100%"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[2][0],//日期
+                    "size": "15px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "400px",
+                "offsetStart": "200px",
+                "position": "absolute"
+              }
+            ],
+            "paddingAll": "0px"
+          }
+        },
+        {
+          "type": "bubble",
+          "body": {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "image",
+                "url": "https://lh3.googleusercontent.com/61cZkoXqIHFDRJM_6rSHW7lTqHEeAOcV1-E1Ri59s94tUlcMcYC4pZliiqp_pfwrM3lBfZrAck3JC-wtbHNcoRCJeLERyieXZ4qmmPUGtFEX48PEHQiwZCVDe9M_3E8R9h-2eWiGDtkQA5HLfimLsZH8e2vtrH0iYW5jg8IYWvG2MOILJRGwJtH9Q2oV-6dCBmShKozjVTb514qWLplfldxlxtS_Rbfhbm7IuEdBHtY76ZbT7c1HzV2vr4HaHjXgxc7nlS_y-PewqL5B4CDgAkKCHxQm-YeKnuQc3-rsLIqBWtv5sRK1I1fny7M74iFSf37VWJN0nm9jKY2bm-ago2w7v7PNEuN8YVFa4iAVWI1RcnJ-vveAL9478n9YQ63_uBB7JUjKkEe6FbaCpMLQJekJwDlMUO_aLcwNFnCCKDilQ7Eu7NmlxuwW7ockkA8KTijjgeH7PTFMp2bWdp-1ByQTGaoTYWMICP50rD2AahmsadMN19heZrVbyT46ujXgKy7mRuwXvrO6oj9Nbgb5WFtIiiYu3Nttuw47aMmbv-w8x9CQHKJnmzQzLej3Ceb1_v3t_tA7ek5AaAriU5UK46Lq2b4jGcRRMj7r1lzMQvkU1l3E67Aa2hr9yJ2etYGxvBoYQDpuNdBOT_JhtiWGB5mKCDZREt1JksY_VeWugXUFfnWip_dXEPl9iBbg5KIywHSRhr_mvBlSw8ws6kTeWd_E=w662-h882-no?authuser=0",
+                "size": "full",
+                "aspectMode": "cover",
+                "aspectRatio": "2:3",
+                "gravity": "top"
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[3][2],//公司名稱
+                    "size": "33px",
+                    "weight": "bold",
+                    "align": "center"
+                  }
+                ],
+                "position": "absolute",
+                "offsetTop": "93px",
+                "width": "100%"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[3][3],//成交價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "152px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[3][4],//開盤價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "190px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[3][5],//最高價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "230px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[3][6],//最低價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "268px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[3][7],//均價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "308px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[3][8],//昨收
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "152px",
+                "offsetStart": "205px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[3][9],//漲跌幅
+                    "size": "18px",
+                    "weight": "bold",
+                    "color": check_color(array[3][4], array[3][3])
+                  }
+                ],
+                "offsetTop": "192px",
+                "offsetStart": "225px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[3][10],//漲跌
+                    "size": "18px",
+                    "weight": "bold",
+                    "color": check_color(array[3][4], array[3][3])
+                  }
+                ],
+                "offsetTop": "230px",
+                "offsetStart": "205px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[3][11],//總量
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "268px",
+                "offsetStart": "205px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[3][12],//振幅
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "308px",
+                "offsetStart": "205px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[3][2] + "新聞",
+                    "size": "25px",
+                    "weight": "bold",
+                    "action": {
+                      "type": "message",
+                      "label": "action",
+                      "text": array[3][2] + "新聞"//新聞
+                    },
+                    "align": "center"
+                  }
+                ],
+                "offsetTop": "354px",
+                "position": "absolute",
+                "width": "100%"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[3][0],//日期
+                    "size": "15px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "400px",
+                "offsetStart": "200px",
+                "position": "absolute"
+              }
+            ],
+            "paddingAll": "0px"
+          }
+        }
+      ]
+    }
+  }
+  return text
+}
+function watch_list_5_item_t(array) {
+  let text = {
+    "type": "flex",
+    "altText": "this is a flex message",
+    "contents": {
+      "type": "carousel",
+      "contents": [
+        {
+          "type": "bubble",
+          "body": {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "image",
+                "url": "https://lh3.googleusercontent.com/61cZkoXqIHFDRJM_6rSHW7lTqHEeAOcV1-E1Ri59s94tUlcMcYC4pZliiqp_pfwrM3lBfZrAck3JC-wtbHNcoRCJeLERyieXZ4qmmPUGtFEX48PEHQiwZCVDe9M_3E8R9h-2eWiGDtkQA5HLfimLsZH8e2vtrH0iYW5jg8IYWvG2MOILJRGwJtH9Q2oV-6dCBmShKozjVTb514qWLplfldxlxtS_Rbfhbm7IuEdBHtY76ZbT7c1HzV2vr4HaHjXgxc7nlS_y-PewqL5B4CDgAkKCHxQm-YeKnuQc3-rsLIqBWtv5sRK1I1fny7M74iFSf37VWJN0nm9jKY2bm-ago2w7v7PNEuN8YVFa4iAVWI1RcnJ-vveAL9478n9YQ63_uBB7JUjKkEe6FbaCpMLQJekJwDlMUO_aLcwNFnCCKDilQ7Eu7NmlxuwW7ockkA8KTijjgeH7PTFMp2bWdp-1ByQTGaoTYWMICP50rD2AahmsadMN19heZrVbyT46ujXgKy7mRuwXvrO6oj9Nbgb5WFtIiiYu3Nttuw47aMmbv-w8x9CQHKJnmzQzLej3Ceb1_v3t_tA7ek5AaAriU5UK46Lq2b4jGcRRMj7r1lzMQvkU1l3E67Aa2hr9yJ2etYGxvBoYQDpuNdBOT_JhtiWGB5mKCDZREt1JksY_VeWugXUFfnWip_dXEPl9iBbg5KIywHSRhr_mvBlSw8ws6kTeWd_E=w662-h882-no?authuser=0",
+                "size": "full",
+                "aspectMode": "cover",
+                "aspectRatio": "2:3",
+                "gravity": "top"
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[0][2],//公司名稱
+                    "size": "33px",
+                    "weight": "bold",
+                    "align": "center"
+                  }
+                ],
+                "position": "absolute",
+                "offsetTop": "93px",
+                "width": "100%"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[0][3],//成交價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "152px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[0][4],//開盤價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "190px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[0][5],//最高價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "230px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[0][6],//最低價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "268px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[0][7],//均價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "308px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[0][8],//昨收
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "152px",
+                "offsetStart": "205px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[0][9],//漲跌幅
+                    "size": "18px",
+                    "weight": "bold",
+                    "color": check_color(array[0][4], array[0][3])
+                  }
+                ],
+                "offsetTop": "192px",
+                "offsetStart": "225px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[0][10],//漲跌
+                    "size": "18px",
+                    "weight": "bold",
+                    "color": check_color(array[0][4], array[0][3])
+                  }
+                ],
+                "offsetTop": "230px",
+                "offsetStart": "205px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[0][11],//總量
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "268px",
+                "offsetStart": "205px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[0][12],//振幅
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "308px",
+                "offsetStart": "205px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[0][2] + "新聞",
+                    "size": "25px",
+                    "weight": "bold",
+                    "action": {
+                      "type": "message",
+                      "label": "action",
+                      "text": array[0][2] + "新聞"//新聞
+                    },
+                    "align": "center"
+                  }
+                ],
+                "offsetTop": "354px",
+                "position": "absolute",
+                "width": "100%"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[0][0],//日期
+                    "size": "15px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "400px",
+                "offsetStart": "200px",
+                "position": "absolute"
+              }
+            ],
+            "paddingAll": "0px"
+          }
+        },
+        {
+          "type": "bubble",
+          "body": {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "image",
+                "url": "https://lh3.googleusercontent.com/61cZkoXqIHFDRJM_6rSHW7lTqHEeAOcV1-E1Ri59s94tUlcMcYC4pZliiqp_pfwrM3lBfZrAck3JC-wtbHNcoRCJeLERyieXZ4qmmPUGtFEX48PEHQiwZCVDe9M_3E8R9h-2eWiGDtkQA5HLfimLsZH8e2vtrH0iYW5jg8IYWvG2MOILJRGwJtH9Q2oV-6dCBmShKozjVTb514qWLplfldxlxtS_Rbfhbm7IuEdBHtY76ZbT7c1HzV2vr4HaHjXgxc7nlS_y-PewqL5B4CDgAkKCHxQm-YeKnuQc3-rsLIqBWtv5sRK1I1fny7M74iFSf37VWJN0nm9jKY2bm-ago2w7v7PNEuN8YVFa4iAVWI1RcnJ-vveAL9478n9YQ63_uBB7JUjKkEe6FbaCpMLQJekJwDlMUO_aLcwNFnCCKDilQ7Eu7NmlxuwW7ockkA8KTijjgeH7PTFMp2bWdp-1ByQTGaoTYWMICP50rD2AahmsadMN19heZrVbyT46ujXgKy7mRuwXvrO6oj9Nbgb5WFtIiiYu3Nttuw47aMmbv-w8x9CQHKJnmzQzLej3Ceb1_v3t_tA7ek5AaAriU5UK46Lq2b4jGcRRMj7r1lzMQvkU1l3E67Aa2hr9yJ2etYGxvBoYQDpuNdBOT_JhtiWGB5mKCDZREt1JksY_VeWugXUFfnWip_dXEPl9iBbg5KIywHSRhr_mvBlSw8ws6kTeWd_E=w662-h882-no?authuser=0",
+                "size": "full",
+                "aspectMode": "cover",
+                "aspectRatio": "2:3",
+                "gravity": "top"
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[1][2],//公司名稱
+                    "size": "33px",
+                    "weight": "bold",
+                    "align": "center"
+                  }
+                ],
+                "position": "absolute",
+                "offsetTop": "93px",
+                "width": "100%"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[1][3],//成交價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "152px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[1][4],//開盤價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "190px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[1][5],//最高價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "230px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[1][6],//最低價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "268px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[1][7],//均價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "308px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[1][8],//昨收
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "152px",
+                "offsetStart": "205px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[1][9],//漲跌幅
+                    "size": "18px",
+                    "weight": "bold",
+                    "color": check_color(array[1][4], array[1][3])
+                  }
+                ],
+                "offsetTop": "192px",
+                "offsetStart": "225px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[1][10],//漲跌
+                    "size": "18px",
+                    "weight": "bold",
+                    "color": check_color(array[1][4], array[1][3])
+                  }
+                ],
+                "offsetTop": "230px",
+                "offsetStart": "205px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[1][11],//總量
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "268px",
+                "offsetStart": "205px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[1][12],//振幅
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "308px",
+                "offsetStart": "205px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[1][2] + "新聞",
+                    "size": "25px",
+                    "weight": "bold",
+                    "action": {
+                      "type": "message",
+                      "label": "action",
+                      "text": array[1][2] + "新聞"//新聞
+                    },
+                    "align": "center"
+                  }
+                ],
+                "offsetTop": "354px",
+                "position": "absolute",
+                "width": "100%"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[1][0],//日期
+                    "size": "15px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "400px",
+                "offsetStart": "200px",
+                "position": "absolute"
+              }
+            ],
+            "paddingAll": "0px"
+          }
+        },
+        {
+          "type": "bubble",
+          "body": {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "image",
+                "url": "https://lh3.googleusercontent.com/61cZkoXqIHFDRJM_6rSHW7lTqHEeAOcV1-E1Ri59s94tUlcMcYC4pZliiqp_pfwrM3lBfZrAck3JC-wtbHNcoRCJeLERyieXZ4qmmPUGtFEX48PEHQiwZCVDe9M_3E8R9h-2eWiGDtkQA5HLfimLsZH8e2vtrH0iYW5jg8IYWvG2MOILJRGwJtH9Q2oV-6dCBmShKozjVTb514qWLplfldxlxtS_Rbfhbm7IuEdBHtY76ZbT7c1HzV2vr4HaHjXgxc7nlS_y-PewqL5B4CDgAkKCHxQm-YeKnuQc3-rsLIqBWtv5sRK1I1fny7M74iFSf37VWJN0nm9jKY2bm-ago2w7v7PNEuN8YVFa4iAVWI1RcnJ-vveAL9478n9YQ63_uBB7JUjKkEe6FbaCpMLQJekJwDlMUO_aLcwNFnCCKDilQ7Eu7NmlxuwW7ockkA8KTijjgeH7PTFMp2bWdp-1ByQTGaoTYWMICP50rD2AahmsadMN19heZrVbyT46ujXgKy7mRuwXvrO6oj9Nbgb5WFtIiiYu3Nttuw47aMmbv-w8x9CQHKJnmzQzLej3Ceb1_v3t_tA7ek5AaAriU5UK46Lq2b4jGcRRMj7r1lzMQvkU1l3E67Aa2hr9yJ2etYGxvBoYQDpuNdBOT_JhtiWGB5mKCDZREt1JksY_VeWugXUFfnWip_dXEPl9iBbg5KIywHSRhr_mvBlSw8ws6kTeWd_E=w662-h882-no?authuser=0",
+                "size": "full",
+                "aspectMode": "cover",
+                "aspectRatio": "2:3",
+                "gravity": "top"
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[2][2],//公司名稱
+                    "size": "33px",
+                    "weight": "bold",
+                    "align": "center"
+                  }
+                ],
+                "position": "absolute",
+                "offsetTop": "93px",
+                "width": "100%"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[2][3],//成交價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "152px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[2][4],//開盤價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "190px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[2][5],//最高價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "230px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[2][6],//最低價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "268px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[2][7],//均價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "308px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[2][8],//昨收
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "152px",
+                "offsetStart": "205px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[2][9],//漲跌幅
+                    "size": "18px",
+                    "weight": "bold",
+                    "color": check_color(array[2][4], array[2][3])
+                  }
+                ],
+                "offsetTop": "192px",
+                "offsetStart": "225px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[2][10],//漲跌
+                    "size": "18px",
+                    "weight": "bold",
+                    "color": check_color(array[2][4], array[2][3])
+                  }
+                ],
+                "offsetTop": "230px",
+                "offsetStart": "205px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[2][11],//總量
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "268px",
+                "offsetStart": "205px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[2][12],//振幅
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "308px",
+                "offsetStart": "205px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[2][2] + "新聞",
+                    "size": "25px",
+                    "weight": "bold",
+                    "action": {
+                      "type": "message",
+                      "label": "action",
+                      "text": array[2][2] + "新聞"//新聞
+                    },
+                    "align": "center"
+                  }
+                ],
+                "offsetTop": "354px",
+                "position": "absolute",
+                "width": "100%"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[2][0],//日期
+                    "size": "15px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "400px",
+                "offsetStart": "200px",
+                "position": "absolute"
+              }
+            ],
+            "paddingAll": "0px"
+          }
+        },
+        {
+          "type": "bubble",
+          "body": {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "image",
+                "url": "https://lh3.googleusercontent.com/61cZkoXqIHFDRJM_6rSHW7lTqHEeAOcV1-E1Ri59s94tUlcMcYC4pZliiqp_pfwrM3lBfZrAck3JC-wtbHNcoRCJeLERyieXZ4qmmPUGtFEX48PEHQiwZCVDe9M_3E8R9h-2eWiGDtkQA5HLfimLsZH8e2vtrH0iYW5jg8IYWvG2MOILJRGwJtH9Q2oV-6dCBmShKozjVTb514qWLplfldxlxtS_Rbfhbm7IuEdBHtY76ZbT7c1HzV2vr4HaHjXgxc7nlS_y-PewqL5B4CDgAkKCHxQm-YeKnuQc3-rsLIqBWtv5sRK1I1fny7M74iFSf37VWJN0nm9jKY2bm-ago2w7v7PNEuN8YVFa4iAVWI1RcnJ-vveAL9478n9YQ63_uBB7JUjKkEe6FbaCpMLQJekJwDlMUO_aLcwNFnCCKDilQ7Eu7NmlxuwW7ockkA8KTijjgeH7PTFMp2bWdp-1ByQTGaoTYWMICP50rD2AahmsadMN19heZrVbyT46ujXgKy7mRuwXvrO6oj9Nbgb5WFtIiiYu3Nttuw47aMmbv-w8x9CQHKJnmzQzLej3Ceb1_v3t_tA7ek5AaAriU5UK46Lq2b4jGcRRMj7r1lzMQvkU1l3E67Aa2hr9yJ2etYGxvBoYQDpuNdBOT_JhtiWGB5mKCDZREt1JksY_VeWugXUFfnWip_dXEPl9iBbg5KIywHSRhr_mvBlSw8ws6kTeWd_E=w662-h882-no?authuser=0",
+                "size": "full",
+                "aspectMode": "cover",
+                "aspectRatio": "2:3",
+                "gravity": "top"
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[3][2],//公司名稱
+                    "size": "33px",
+                    "weight": "bold",
+                    "align": "center"
+                  }
+                ],
+                "position": "absolute",
+                "offsetTop": "93px",
+                "width": "100%"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[3][3],//成交價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "152px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[3][4],//開盤價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "190px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[3][5],//最高價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "230px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[3][6],//最低價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "268px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[3][7],//均價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "308px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[3][8],//昨收
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "152px",
+                "offsetStart": "205px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[3][9],//漲跌幅
+                    "size": "18px",
+                    "weight": "bold",
+                    "color": check_color(array[3][4], array[3][3])
+                  }
+                ],
+                "offsetTop": "192px",
+                "offsetStart": "225px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[3][10],//漲跌
+                    "size": "18px",
+                    "weight": "bold",
+                    "color": check_color(array[3][4], array[3][3])
+                  }
+                ],
+                "offsetTop": "230px",
+                "offsetStart": "205px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[3][11],//總量
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "268px",
+                "offsetStart": "205px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[3][12],//振幅
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "308px",
+                "offsetStart": "205px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[3][2] + "新聞",
+                    "size": "25px",
+                    "weight": "bold",
+                    "action": {
+                      "type": "message",
+                      "label": "action",
+                      "text": array[3][2] + "新聞"//新聞
+                    },
+                    "align": "center"
+                  }
+                ],
+                "offsetTop": "354px",
+                "position": "absolute",
+                "width": "100%"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[3][0],//日期
+                    "size": "15px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "400px",
+                "offsetStart": "200px",
+                "position": "absolute"
+              }
+            ],
+            "paddingAll": "0px"
+          }
+        },
+        {
+          "type": "bubble",
+          "body": {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "image",
+                "url": "https://lh3.googleusercontent.com/61cZkoXqIHFDRJM_6rSHW7lTqHEeAOcV1-E1Ri59s94tUlcMcYC4pZliiqp_pfwrM3lBfZrAck3JC-wtbHNcoRCJeLERyieXZ4qmmPUGtFEX48PEHQiwZCVDe9M_3E8R9h-2eWiGDtkQA5HLfimLsZH8e2vtrH0iYW5jg8IYWvG2MOILJRGwJtH9Q2oV-6dCBmShKozjVTb514qWLplfldxlxtS_Rbfhbm7IuEdBHtY76ZbT7c1HzV2vr4HaHjXgxc7nlS_y-PewqL5B4CDgAkKCHxQm-YeKnuQc3-rsLIqBWtv5sRK1I1fny7M74iFSf37VWJN0nm9jKY2bm-ago2w7v7PNEuN8YVFa4iAVWI1RcnJ-vveAL9478n9YQ63_uBB7JUjKkEe6FbaCpMLQJekJwDlMUO_aLcwNFnCCKDilQ7Eu7NmlxuwW7ockkA8KTijjgeH7PTFMp2bWdp-1ByQTGaoTYWMICP50rD2AahmsadMN19heZrVbyT46ujXgKy7mRuwXvrO6oj9Nbgb5WFtIiiYu3Nttuw47aMmbv-w8x9CQHKJnmzQzLej3Ceb1_v3t_tA7ek5AaAriU5UK46Lq2b4jGcRRMj7r1lzMQvkU1l3E67Aa2hr9yJ2etYGxvBoYQDpuNdBOT_JhtiWGB5mKCDZREt1JksY_VeWugXUFfnWip_dXEPl9iBbg5KIywHSRhr_mvBlSw8ws6kTeWd_E=w662-h882-no?authuser=0",
+                "size": "full",
+                "aspectMode": "cover",
+                "aspectRatio": "2:3",
+                "gravity": "top"
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[4][2],//公司名稱
+                    "size": "33px",
+                    "weight": "bold",
+                    "align": "center"
+                  }
+                ],
+                "position": "absolute",
+                "offsetTop": "93px",
+                "width": "100%"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[4][3],//成交價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "152px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[4][4],//開盤價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "190px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[4][5],//最高價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "230px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[4][6],//最低價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "268px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[4][7],//均價
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "308px",
+                "offsetStart": "90px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[4][8],//昨收
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "152px",
+                "offsetStart": "205px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[4][9],//漲跌幅
+                    "size": "18px",
+                    "weight": "bold",
+                    "color": check_color(array[4][4], array[4][3])
+                  }
+                ],
+                "offsetTop": "192px",
+                "offsetStart": "225px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[4][10],//漲跌
+                    "size": "18px",
+                    "weight": "bold",
+                    "color": check_color(array[4][4], array[4][3])
+                  }
+                ],
+                "offsetTop": "230px",
+                "offsetStart": "205px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[4][11],//總量
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "268px",
+                "offsetStart": "205px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[4][12],//振幅
+                    "size": "18px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "308px",
+                "offsetStart": "205px",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[4][2] + "新聞",
+                    "size": "25px",
+                    "weight": "bold",
+                    "action": {
+                      "type": "message",
+                      "label": "action",
+                      "text": array[4][2] + "新聞"//新聞
+                    },
+                    "align": "center"
+                  }
+                ],
+                "offsetTop": "354px",
+                "position": "absolute",
+                "width": "100%"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": array[4][0],//日期
+                    "size": "15px",
+                    "weight": "bold"
+                  }
+                ],
+                "offsetTop": "400px",
+                "offsetStart": "200px",
+                "position": "absolute"
+              }
+            ],
+            "paddingAll": "0px"
+          }
+        }
+      ]
+    }
+  }
+  return text
+}
+

@@ -42,10 +42,10 @@ bot.on('message', function (event) {
       })
     setTimeout(() => {
       // 三秒後回傳資料
-      event.reply(flex.watch_list_1_item(array)).then(function (data) {
+      event.reply(flex.check_watch_list_tiem(array)).then(function (data) {
         // 當訊息成功回傳後的處理
       })
-    }, 1000);
+    }, 500);
   } else if (event.message.text.substr(0, 1) == "+") {
     let stock = event.message.text.substr(1, 4)
     event.reply("將股票代號：" + stock + "加入關注清單").then(function (data) {
