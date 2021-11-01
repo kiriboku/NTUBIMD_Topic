@@ -13,26 +13,26 @@ var bot = linebot({
   channelAccessToken: 'qQ8Jy0v3j3pUlOebdVPnNmj7dxOC1Td8sfDIE7PiMnpxceApOWRmWdbP1buzeStt+WeOY+OFyJDqrkLK/DvIC+9vhED7MdqKoZ1D6q+y8WocAqBMqt1SVQX5LZmkVGv3m6j7fX8gW+CPjzPPJ7AdEAdB04t89/1O/w1cDnyilFU='
 });
 
-var tw_news = ["台股新聞","股票消息"]
+var tw_news = ["台股新聞", "股票消息"]
 var house = ["房產新聞"]
 var forex = ["外匯新聞"]
 var headline = ["頭條新聞", "最近的新聞"]
 var money = ["理財新聞"]
 var future = ["期貨新聞"]
-var news_2330 = ["2330新聞","台積電新聞"]
-var news_2317 = ["2317新聞","鴻海新聞"]
-var news_2377 = ["2377新聞","微星新聞"]
-var news_2379 = ["2379新聞","瑞昱新聞"]
-var news_2383 = ["2383新聞","台光電新聞"]
-var news_1101 = ["1101新聞","台泥新聞"]
-var news_2002 = ["2002新聞","中鋼新聞"]
-var news_2603 = ["2603新聞","長榮新聞"]
-var news_2610 = ["2610新聞","華航新聞"]
+var news_2330 = ["2330新聞", "台積電新聞"]
+var news_2317 = ["2317新聞", "鴻海新聞"]
+var news_2377 = ["2377新聞", "微星新聞"]
+var news_2379 = ["2379新聞", "瑞昱新聞"]
+var news_2383 = ["2383新聞", "台光電新聞"]
+var news_1101 = ["1101新聞", "台泥新聞"]
+var news_2002 = ["2002新聞", "中鋼新聞"]
+var news_2603 = ["2603新聞", "長榮新聞"]
+var news_2610 = ["2610新聞", "華航新聞"]
 
 // 當有人傳送訊息給Bot時
 bot.on('message', function (event) {
   if (event.message.text == "關注清單") {
-    let array=[]
+    let array = []
     Promise.all([follow_watch_one.show_follow(event.source.userId)])
       .then(([oneSecond]) => {
         oneSecond.forEach(element => Promise.all([follow_watch_two.list(element)])
@@ -266,6 +266,28 @@ bot.on('message', function (event) {
           // 當訊息成功回傳後的處理
         })
       }, 1000);
+    }
+    else if (message == "漲幅最大股價") {
+      Promise.all([follow_watch_two.close_date()])
+        .then(([oneSecond]) => {
+          Promise.all([follow_watch_two.best_rise(oneSecond)])
+            .then(([oneSecond]) => {
+              event.reply("股票代號:"+oneSecond[0]+"\n"+"股票名稱:"+oneSecond[1]+"\n"+"漲幅:"+oneSecond[2]).then(function (data) {
+                // 當訊息成功回傳後的處理
+              })
+            })
+        })
+    }
+    else if (message == "跌幅最大股價") {
+      Promise.all([follow_watch_two.close_date()])
+        .then(([oneSecond]) => {
+          Promise.all([follow_watch_two.best_down(oneSecond)])
+            .then(([oneSecond]) => {
+              event.reply("股票代號:"+oneSecond[0]+"\n"+"股票名稱:"+oneSecond[1]+"\n"+"跌幅:"+oneSecond[2]).then(function (data) {
+                // 當訊息成功回傳後的處理
+              })
+            })
+        })
     }
     else {
       event.reply(message).then(function (data) {

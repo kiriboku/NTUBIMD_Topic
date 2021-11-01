@@ -94,7 +94,7 @@ function classify_com_news(quest, turn) {
 
 function classify_stock(quest, turn) {
     Str_quest = String(quest)
-    let choices = ["台股走勢圖", "2317股價", "台積電股價", "2330股價", "2377股價", "2379股價", "2383股價", "1101股價", "2002股價", "2603股價", "2610股價", "9957股價"]
+    let choices = ["台股走勢圖", "2317股價", "台積電股價", "2330股價", "2377股價", "2379股價", "2383股價", "1101股價", "2002股價", "2603股價", "2610股價", "9957股價","漲幅最大股價","跌幅最大股價"]
     results = fuzz.extract(Str_quest, choices)//fuzz.extract(query, choices, options);
     let max = 0
     let max_text = 0
