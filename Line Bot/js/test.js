@@ -51,16 +51,3 @@
 //     })
 //   }, 5000);
 
-array = ["1", "2"]
-console.log(array.length)
-
-function ange(array) {
-    switch (array.length) {
-        case 1:
-            return "項目數量1"
-        case 2:
-            return "項目數量2"
-    }
-}
-
-console.log(ange(array))

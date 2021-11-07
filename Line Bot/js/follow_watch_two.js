@@ -4,7 +4,7 @@ var config =
 {
     host: '127.0.0.1',
     user: 'root',
-    password: '',
+    password: 'C23670424989',
     database: 'stock',
     port: 3306,
     ssl: true
@@ -74,48 +74,77 @@ module.exports.close_date = function close_date() {
     })
 }
 
-module.exports.best_rise = function best_rise(date) {
+// module.exports.best_down = function best_down(date) {
+//     return new Promise((resolve) => {
+//         conn.query('SELECT * FROM 每日股票交易 where 日期 = "' + date + '" order by 漲跌幅 DESC ', (err, results) => {
+//             if (err) { throw err; }
+//             let y = 1
+//             let i = 0
+//             while (y == 1) {
+//                 if (results[i].昨收 > results[i].成交) {
+//                     let array = []
+//                     array.push(results[i].股票代號)
+//                     array.push(results[i].股票名稱)
+//                     array.push(results[i].漲跌幅)
+//                     // resolve(array)
+//                     resolve(array)
+//                     y++
+//                 } else {
+//                     i++
+//                 }
+//             }
+//         })
+//     })
+// }
+
+module.exports.best_down = function best_rise(date) {
     return new Promise((resolve) => {
         conn.query('SELECT * FROM 每日股票交易 where 日期 = "' + date + '" order by 漲跌幅 DESC ', (err, results) => {
             if (err) { throw err; }
-            let y = 1
+            let y = 0
             let i = 0
-            while (y == 1) {
-                if (results[i].成交 > results[i].昨收) {
-                    let array = []
-                    array.push(results[0].股票代號)
-                    array.push(results[0].股票名稱)
-                    array.push(results[0].漲跌幅)
-                    // resolve(array)
-                    resolve(array)
+            let array = []
+            while (y < 3) {
+                if (results[i].昨收 > results[i].成交) {
+                    let array_ndividual = []
+                    array_ndividual.push(results[i].股票代號)
+                    array_ndividual.push(results[i].股票名稱)
+                    array_ndividual.push(results[i].漲跌幅)
+                    array.push(array_ndividual)
+                    array_ndividual.splice
                     y++
+                    i++
                 } else {
                     i++
                 }
             }
+            resolve(array)
         })
     })
 }
 
-module.exports.best_down = function best_down(date) {
+module.exports.best_rise = function best_rise(date) {
     return new Promise((resolve) => {
         conn.query('SELECT * FROM 每日股票交易 where 日期 = "' + date + '" order by 漲跌幅 DESC ', (err, results) => {
             if (err) { throw err; }
-            let y = 1
+            let y = 0
             let i = 0
-            while (y == 1) {
-                if (results[i].昨收 > results[i].成交) {
-                    let array = []
-                    array.push(results[i].股票代號)
-                    array.push(results[i].股票名稱)
-                    array.push(results[i].漲跌幅)
-                    // resolve(array)
-                    resolve(array)
+            let array = []
+            while (y < 3) {
+                if (results[i].成交 > results[i].昨收) {
+                    let array_ndividual = []
+                    array_ndividual.push(results[i].股票代號)
+                    array_ndividual.push(results[i].股票名稱)
+                    array_ndividual.push(results[i].漲跌幅)
+                    array.push(array_ndividual)
+                    array_ndividual.splice
                     y++
+                    i++
                 } else {
                     i++
                 }
             }
+            resolve(array)
         })
     })
 }

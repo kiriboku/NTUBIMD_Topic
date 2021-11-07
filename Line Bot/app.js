@@ -48,10 +48,18 @@ bot.on('message', function (event) {
     }, 500);
   } else if (event.message.text.substr(0, 1) == "+") {
     let stock = event.message.text.substr(1, 4)
-    event.reply("將股票代號：" + stock + "加入關注清單").then(function (data) {
-      // 當訊息成功回傳後的處理
-      follow_watch_one.insertData_load(event.source.userId, stock)
-    })
+    Promise.all([follow_watch_one.show_follow(event.source.userId)])
+      .then(([oneSecond]) => {
+        if (oneSecond.includes(stock)) {
+          event.reply('股票代號：' + stock + '已在關注清單')
+        }
+        else {
+          event.reply("將股票代號：" + stock + "加入關注清單").then(function (data) {
+            // 當訊息成功回傳後的處理
+            follow_watch_one.insertData_load(event.source.userId, stock)
+          })
+        }
+      })
   } else if (event.message.text.substr(0, 1) == "-") {
     let stock = event.message.text.substr(1, 4)
     event.reply("將股票代號：" + stock + "從關注清單移除").then(function (data) {
@@ -272,7 +280,7 @@ bot.on('message', function (event) {
         .then(([oneSecond]) => {
           Promise.all([follow_watch_two.best_rise(oneSecond)])
             .then(([oneSecond]) => {
-              event.reply("股票代號:"+oneSecond[0]+"\n"+"股票名稱:"+oneSecond[1]+"\n"+"漲幅:"+oneSecond[2]).then(function (data) {
+              event.reply(flex.best_rise(oneSecond)).then(function (data) {
                 // 當訊息成功回傳後的處理
               })
             })
@@ -283,7 +291,7 @@ bot.on('message', function (event) {
         .then(([oneSecond]) => {
           Promise.all([follow_watch_two.best_down(oneSecond)])
             .then(([oneSecond]) => {
-              event.reply("股票代號:"+oneSecond[0]+"\n"+"股票名稱:"+oneSecond[1]+"\n"+"跌幅:"+oneSecond[2]).then(function (data) {
+              event.reply(flex.best_down(oneSecond)).then(function (data) {
                 // 當訊息成功回傳後的處理
               })
             })
