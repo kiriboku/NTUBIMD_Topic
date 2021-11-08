@@ -75,7 +75,7 @@ function classify_news(quest, turn) {
 function classify_com_news(quest, turn) {
     Str_quest = String(quest)
     let choices = ["2317新聞", "鴻海新聞", "2330新聞", "台積電新聞", "2377新聞", "微星新聞", "2379新聞", "瑞昱新聞"
-        , "2383新聞", "台光電新聞", "1101新聞", "台泥新聞", "2002新聞", "中鋼新聞", "2603新聞", "長榮新聞", "2610新聞", "華航新聞"]
+        , "2383新聞", "台光電新聞", "1101新聞", "台泥新聞", "2002新聞", "中鋼新聞", "2603新聞", "長榮新聞", "2610新聞", "華航新聞","2015新聞","豐興新聞"]
     results = fuzz.extract(Str_quest, choices)//fuzz.extract(query, choices, options);
     let max = 0
     let max_text = 0
@@ -148,8 +148,3 @@ function classify_com(quest, turn) {
         return (max_text)
     }
 }
-
-// let choices = ["2317股價", "2330股價", "2377股價", "2379股價", "2383股價", "1101股價", "2002股價", "2603股價", "2610股價", "9957股價","期貨新聞", "台股新聞", "外匯新聞", "房產新聞","關注清單","+","-"]
-// console.log(fuzz.extract("關注清單", choices))
-
-// console.log(user_question("我想了解台積電的每股盈餘"))

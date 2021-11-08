@@ -83,8 +83,8 @@ module.exports.flex_news_tw = function flex_news_tw(array) {
             "height": "sm",
             "action": {
               "type": "uri",
-              "label": array[0],
-              "uri": array[1]
+              "label": array[0][0],
+              "uri": array[0][1]
             }
           },
           {
@@ -93,16 +93,16 @@ module.exports.flex_news_tw = function flex_news_tw(array) {
             "height": "sm",
             "action": {
               "type": "uri",
-              "label": array[2],
-              "uri": array[3]
+              "label": array[1][0],
+              "uri": array[1][1]
             }
           },
           {
             "type": "button",
             "action": {
               "type": "uri",
-              "label": array[4],
-              "uri": array[5]
+              "label": array[2][0],
+              "uri": array[2][1]
             }
           },
           {
@@ -201,8 +201,8 @@ module.exports.flex_news_house = function flex_news_house(array) {
             "height": "sm",
             "action": {
               "type": "uri",
-              "label": array[0],
-              "uri": array[1]
+              "label": array[0][0],
+              "uri": array[0][1]
             }
           },
           {
@@ -211,16 +211,16 @@ module.exports.flex_news_house = function flex_news_house(array) {
             "height": "sm",
             "action": {
               "type": "uri",
-              "label": array[2],
-              "uri": array[3]
+              "label": array[1][0],
+              "uri": array[1][1]
             }
           },
           {
             "type": "button",
             "action": {
               "type": "uri",
-              "label": array[4],
-              "uri": array[5]
+              "label": array[2][0],
+              "uri": array[2][1]
             }
           },
           {
@@ -319,8 +319,8 @@ module.exports.flex_news_headline = function flex_news_headline(array) {
             "height": "sm",
             "action": {
               "type": "uri",
-              "label": array[0],
-              "uri": array[1]
+              "label": array[0][0],
+              "uri": array[0][1]
             }
           },
           {
@@ -329,16 +329,16 @@ module.exports.flex_news_headline = function flex_news_headline(array) {
             "height": "sm",
             "action": {
               "type": "uri",
-              "label": array[2],
-              "uri": array[3]
+              "label": array[1][0],
+              "uri": array[1][1]
             }
           },
           {
             "type": "button",
             "action": {
               "type": "uri",
-              "label": array[4],
-              "uri": array[5]
+              "label": array[2][0],
+              "uri": array[2][1]
             }
           },
           {
@@ -437,8 +437,8 @@ module.exports.flex_news_forex = function flex_news_forex(array) {
             "height": "sm",
             "action": {
               "type": "uri",
-              "label": array[0],
-              "uri": array[1]
+              "label": array[0][0],
+              "uri": array[0][1]
             }
           },
           {
@@ -447,16 +447,16 @@ module.exports.flex_news_forex = function flex_news_forex(array) {
             "height": "sm",
             "action": {
               "type": "uri",
-              "label": array[2],
-              "uri": array[3]
+              "label": array[1][0],
+              "uri": array[1][1]
             }
           },
           {
             "type": "button",
             "action": {
               "type": "uri",
-              "label": array[4],
-              "uri": array[5]
+              "label": array[2][0],
+              "uri": array[2][1]
             }
           },
           {
@@ -555,8 +555,8 @@ module.exports.flex_news_future = function flex_news_future(array) {
             "height": "sm",
             "action": {
               "type": "uri",
-              "label": array[0],
-              "uri": array[1]
+              "label": array[0][0],
+              "uri": array[0][1]
             }
           },
           {
@@ -565,16 +565,16 @@ module.exports.flex_news_future = function flex_news_future(array) {
             "height": "sm",
             "action": {
               "type": "uri",
-              "label": array[2],
-              "uri": array[3]
+              "label": array[1][0],
+              "uri": array[1][1]
             }
           },
           {
             "type": "button",
             "action": {
               "type": "uri",
-              "label": array[4],
-              "uri": array[5]
+              "label": array[2][0],
+              "uri": array[2][1]
             }
           },
           {
@@ -673,8 +673,8 @@ module.exports.flex_news_money = function flex_news_money(array) {
             "height": "sm",
             "action": {
               "type": "uri",
-              "label": array[0],
-              "uri": array[1]
+              "label": array[0][0],
+              "uri": array[0][1]
             }
           },
           {
@@ -683,16 +683,16 @@ module.exports.flex_news_money = function flex_news_money(array) {
             "height": "sm",
             "action": {
               "type": "uri",
-              "label": array[2],
-              "uri": array[3]
+              "label": array[1][0],
+              "uri": array[1][1]
             }
           },
           {
             "type": "button",
             "action": {
               "type": "uri",
-              "label": array[4],
-              "uri": array[5]
+              "label": array[2][0],
+              "uri": array[2][1]
             }
           },
           {
@@ -747,8 +747,8 @@ module.exports.flex_news_2330 = function flex_news_2330(array) {
             "height": "sm",
             "action": {
               "type": "uri",
-              "label": array[0],
-              "uri": array[1]
+              "label": array[0][0],
+              "uri": array[0][1]
             }
           },
           {
@@ -757,16 +757,16 @@ module.exports.flex_news_2330 = function flex_news_2330(array) {
             "height": "sm",
             "action": {
               "type": "uri",
-              "label": array[2],
-              "uri": array[3]
+              "label": array[1][0],
+              "uri": array[1][1]
             }
           },
           {
             "type": "button",
             "action": {
               "type": "uri",
-              "label": array[4],
-              "uri": array[5]
+              "label": array[2][0],
+              "uri": array[2][1]
             }
           },
           {
@@ -821,8 +821,8 @@ module.exports.flex_news_2317 = function flex_news_2317(array) {
             "height": "sm",
             "action": {
               "type": "uri",
-              "label": array[0],
-              "uri": array[1]
+              "label": array[0][0],
+              "uri": array[0][1]
             }
           },
           {
@@ -831,16 +831,16 @@ module.exports.flex_news_2317 = function flex_news_2317(array) {
             "height": "sm",
             "action": {
               "type": "uri",
-              "label": array[2],
-              "uri": array[3]
+              "label": array[1][0],
+              "uri": array[1][1]
             }
           },
           {
             "type": "button",
             "action": {
               "type": "uri",
-              "label": array[4],
-              "uri": array[5]
+              "label": array[2][0],
+              "uri": array[2][1]
             }
           },
           {
@@ -895,8 +895,8 @@ module.exports.flex_news_2377 = function flex_news_2377(array) {
             "height": "sm",
             "action": {
               "type": "uri",
-              "label": array[0],
-              "uri": array[1]
+              "label": array[0][0],
+              "uri": array[0][1]
             }
           },
           {
@@ -905,16 +905,16 @@ module.exports.flex_news_2377 = function flex_news_2377(array) {
             "height": "sm",
             "action": {
               "type": "uri",
-              "label": array[2],
-              "uri": array[3]
+              "label": array[1][0],
+              "uri": array[1][1]
             }
           },
           {
             "type": "button",
             "action": {
               "type": "uri",
-              "label": array[4],
-              "uri": array[5]
+              "label": array[2][0],
+              "uri": array[2][1]
             }
           },
           {
@@ -969,8 +969,8 @@ module.exports.flex_news_2379 = function flex_news_2379(array) {
             "height": "sm",
             "action": {
               "type": "uri",
-              "label": array[0],
-              "uri": array[1]
+              "label": array[0][0],
+              "uri": array[0][1]
             }
           },
           {
@@ -979,16 +979,16 @@ module.exports.flex_news_2379 = function flex_news_2379(array) {
             "height": "sm",
             "action": {
               "type": "uri",
-              "label": array[2],
-              "uri": array[3]
+              "label": array[1][0],
+              "uri": array[1][1]
             }
           },
           {
             "type": "button",
             "action": {
               "type": "uri",
-              "label": array[4],
-              "uri": array[5]
+              "label": array[2][0],
+              "uri": array[2][1]
             }
           },
           {
@@ -1043,8 +1043,8 @@ module.exports.flex_news_2383 = function flex_news_2383(array) {
             "height": "sm",
             "action": {
               "type": "uri",
-              "label": array[0],
-              "uri": array[1]
+              "label": array[0][0],
+              "uri": array[0][1]
             }
           },
           {
@@ -1053,16 +1053,16 @@ module.exports.flex_news_2383 = function flex_news_2383(array) {
             "height": "sm",
             "action": {
               "type": "uri",
-              "label": array[2],
-              "uri": array[3]
+              "label": array[1][0],
+              "uri": array[1][1]
             }
           },
           {
             "type": "button",
             "action": {
               "type": "uri",
-              "label": array[4],
-              "uri": array[5]
+              "label": array[2][0],
+              "uri": array[2][1]
             }
           },
           {
@@ -1117,8 +1117,8 @@ module.exports.flex_news_1101 = function flex_news_1101(array) {
             "height": "sm",
             "action": {
               "type": "uri",
-              "label": array[0],
-              "uri": array[1]
+              "label": array[0][0],
+              "uri": array[0][1]
             }
           },
           {
@@ -1127,16 +1127,16 @@ module.exports.flex_news_1101 = function flex_news_1101(array) {
             "height": "sm",
             "action": {
               "type": "uri",
-              "label": array[2],
-              "uri": array[3]
+              "label": array[1][0],
+              "uri": array[1][1]
             }
           },
           {
             "type": "button",
             "action": {
               "type": "uri",
-              "label": array[4],
-              "uri": array[5]
+              "label": array[2][0],
+              "uri": array[2][1]
             }
           },
           {
@@ -1191,8 +1191,8 @@ module.exports.flex_news_2002 = function flex_news_2002(array) {
             "height": "sm",
             "action": {
               "type": "uri",
-              "label": array[0],
-              "uri": array[1]
+              "label": array[0][0],
+              "uri": array[0][1]
             }
           },
           {
@@ -1201,16 +1201,16 @@ module.exports.flex_news_2002 = function flex_news_2002(array) {
             "height": "sm",
             "action": {
               "type": "uri",
-              "label": array[2],
-              "uri": array[3]
+              "label": array[1][0],
+              "uri": array[1][1]
             }
           },
           {
             "type": "button",
             "action": {
               "type": "uri",
-              "label": array[4],
-              "uri": array[5]
+              "label": array[2][0],
+              "uri": array[2][1]
             }
           },
           {
@@ -1265,8 +1265,8 @@ module.exports.flex_news_2603 = function flex_news_2603(array) {
             "height": "sm",
             "action": {
               "type": "uri",
-              "label": array[0],
-              "uri": array[1]
+              "label": array[0][0],
+              "uri": array[0][1]
             }
           },
           {
@@ -1275,16 +1275,16 @@ module.exports.flex_news_2603 = function flex_news_2603(array) {
             "height": "sm",
             "action": {
               "type": "uri",
-              "label": array[2],
-              "uri": array[3]
+              "label": array[1][0],
+              "uri": array[1][1]
             }
           },
           {
             "type": "button",
             "action": {
               "type": "uri",
-              "label": array[4],
-              "uri": array[5]
+              "label": array[2][0],
+              "uri": array[2][1]
             }
           },
           {
@@ -1339,8 +1339,8 @@ module.exports.flex_news_2610 = function flex_news_2610(array) {
             "height": "sm",
             "action": {
               "type": "uri",
-              "label": array[0],
-              "uri": array[1]
+              "label": array[0][0],
+              "uri": array[0][1]
             }
           },
           {
@@ -1349,16 +1349,91 @@ module.exports.flex_news_2610 = function flex_news_2610(array) {
             "height": "sm",
             "action": {
               "type": "uri",
-              "label": array[2],
-              "uri": array[3]
+              "label": array[1][0],
+              "uri": array[1][1]
             }
           },
           {
             "type": "button",
             "action": {
               "type": "uri",
-              "label": array[4],
-              "uri": array[5]
+              "label": array[2][0],
+              "uri": array[2][1]
+            }
+          },
+          {
+            "type": "spacer",
+            "size": "sm"
+          }
+        ],
+        "flex": 0
+      }
+    }
+  }
+  return text
+}
+
+module.exports.flex_news_2015 = function flex_news_2015(array) {
+  let text = {
+    "type": "flex",
+    "altText": "this is a flex message",
+    "contents": {
+      "type": "bubble",
+      "header": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "text",
+            "text": "豐興新聞",
+            "size": "35px",
+            "weight": "bold",
+            "align": "center"
+          }
+        ]
+      },
+      "hero": {
+        "type": "image",
+        "url": "https://lh3.googleusercontent.com/k7hJD7efgEX8gEm1-zFHBd2Uq6htPU-rIj0r1Tj6WFgC3kyXRkUoqt4f510uJAyc-ACCfPbBFATb0yd_n7dyp1AkeSlc2j-nzJJiFUMRMIA1Cv-tKFHaSRrmneZM-qqAOeOWp-D8D_ao5f_3tGO9P0MwKjF3Q093lupQAEMsuYHb-LVXyNfKeR5319TjYSjMDmRSHmtbKwnqjl21i1dUcJ0Ihp47ENdjlwyzEwyBIwWMI99TK2f8xDjFi8IBTRIP6dhAtD1Xrd7K2lDzdl7QIaRwdfTuVsXY1t7hXNNlAuNPCeen4rGXCo7wjk3d_gkxORS4YCfMzw8TY9-c97PB48fvCXQ9nzhfpYbWKneqPGxWll-p7Et26h8iq_2xC_WfLDExfinSKCcYK-PfbFukVlOAatfTGWuIk0APY0WAB0zNGb4Ndz5I4kNqLw7zZn5pCYN0aft3l25pLXhxSRMKO-Rw74v9aOztdS-hMbmN8xVbUCy8rKs1lEasRR7CwvgWAZWvQ7YiaXZ8pwDWwfTa-g5AJmNA24LDrlmM8V8W83Wbh1TYvVhSTZMWbHBKP9XxY2G0RsatyqzEuZzgR9Lauc0UL0dB9imOArSUSYEbrysSHadvXQH26yUImA4QueUbHyPn8yQ4dQVYWyn95NuDsTF9sRW28jSrunUU04bpfGHQ9NjmVFB0_I5q1uGwQcqr0wfbWkhSUCdeJrq19ooguHWe=w600-h390-no?authuser=0",
+        "size": "full",
+        "aspectRatio": "20:13",
+        "aspectMode": "cover",
+        "action": {
+          "type": "uri",
+          "uri": "http://linecorp.com/"
+        }
+      },
+      "footer": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "button",
+            "style": "link",
+            "height": "sm",
+            "action": {
+              "type": "uri",
+              "label": array[0][0],
+              "uri": array[0][1]
+            }
+          },
+          {
+            "type": "button",
+            "style": "link",
+            "height": "sm",
+            "action": {
+              "type": "uri",
+              "label": array[1][0],
+              "uri": array[1][1]
+            }
+          },
+          {
+            "type": "button",
+            "action": {
+              "type": "uri",
+              "label": array[2][0],
+              "uri": array[2][1]
             }
           },
           {

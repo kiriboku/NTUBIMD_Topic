@@ -25,30 +25,20 @@ conn.connect(
 
 //資料庫連線設定    
 
-module.exports.search_News_db = function search_News_db(News_type) {
+module.exports.search_News_db = function search_News_db(stock) {
     return new Promise((resolve) => {
-        conn.query('SELECT * FROM news where 新聞類型 = ' + "'" + News_type + "'", (err, results) => {
+        conn.query('SELECT * FROM news where 股票代號 = ' + "'" + stock + "'", (err, results) => {
             let array = []
-            array.push(results[0].標題)
-            array.push(results[0].網址)
+            for(i=0;i<3;i++){
+                array_a = []
+                array_a.push(results[i].標題)
+                array_a.push(results[i].網址)
+                array.push(array_a)
+            }
             resolve(array)
         })
     })
 }
-
-// let News_tw_type = ["tw_1", "tw_2", "tw_3"]
-// let News_tw = []
-// News_tw_type.forEach(element => Promise.all([search_News_db(element)])
-//     .then(([oneSecond]) => {
-//         News_tw = News_tw.concat(oneSecond)
-//     }));
-// setTimeout(() => {
-//     // 三秒後回傳資料
-//     console.log(News_tw)
-// }, 1000);
-
-//呼叫範例
-
 
 
 
