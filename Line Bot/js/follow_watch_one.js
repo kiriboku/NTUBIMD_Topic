@@ -5,8 +5,8 @@ var config =
 {
     host: '127.0.0.1',
     user: 'root',
-    password: 'C23670424989',
-    database: 'line-bot',
+    password: '',
+    database: 'ntub-line',
     port: 3306,
     ssl: true
 };

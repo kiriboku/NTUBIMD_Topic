@@ -132,7 +132,7 @@ function classify_kno(quest, turn) {
 
 function classify_com(quest, turn) {
     Str_quest = String(quest)
-    let choices = ["台積電每股盈餘", "台積電經營能力", "台積電獲利能力"]
+    let choices = ["台積電每股盈餘", "台積電經營能力", "台積電獲利能力","2330股利政策"]
     results = fuzz.extract(Str_quest, choices)//fuzz.extract(query, choices, options);
     let max = 0
     let max_text = 0

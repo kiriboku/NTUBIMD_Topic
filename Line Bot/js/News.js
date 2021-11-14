@@ -4,8 +4,8 @@ var config =
 {
     host: '127.0.0.1',
     user: 'root',
-    password: 'C23670424989',
-    database: 'line-bot',
+    password: '',
+    database: 'ntub-line',
     port: 3306,
     ssl: true
 };
@@ -27,12 +27,12 @@ conn.connect(
 
 module.exports.search_News_db = function search_News_db(stock) {
     return new Promise((resolve) => {
-        conn.query('SELECT * FROM news where 股票代號 = ' + "'" + stock + "'", (err, results) => {
+        conn.query('SELECT * FROM news where news_type = ' + "'" + stock + "'", (err, results) => {
             let array = []
             for(i=0;i<3;i++){
                 array_a = []
-                array_a.push(results[i].標題)
-                array_a.push(results[i].網址)
+                array_a.push(results[i].title)
+                array_a.push(results[i].url)
                 array.push(array_a)
             }
             resolve(array)
