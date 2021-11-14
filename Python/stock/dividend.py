@@ -1,33 +1,25 @@
 import requests
 from bs4 import BeautifulSoup
-import pymysql
+import mysql.connector
 
-def get_dividend_db(datas):
-    # 資料庫參數設定
-    db_settings = {
-        "host": "127.0.0.1",
-        "port": 3306,
-        "user": "root",
-        "password": "C23670424989",
-        "db": "stock",
-        "charset": "utf8"
-    }
+def dividend_policy(tuple_item):
+    mydb = mysql.connector.connect(
+      host="127.0.0.1",
+      user="root",
+      password="C23670424989",
+      database="ntub-line"
+    )
+
+    mycursor = mydb.cursor()
     
-    try:
-        # 建立Connection物件
-        conn = pymysql.connect(**db_settings)
-    # 建立Cursor物件
-        with conn.cursor() as cursor:# 新增資料SQL語法
-            command = """INSERT INTO 股利政策(股票代號,除權息日,除權息前股價,配息,配股,現金殖利率,股票殖利率,合計殖利率,本益比,EPS,填息天數,填息日期)VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"""
-            # 取得股票價格
-            
-            for data in datas:
-                
-                cursor.execute(command,(data))
-                conn.commit()
-            
-    except Exception as ex:
-        print(ex)
+    sql = "INSERT INTO dividend_policy (stock,ex_dividend_date,ex_dividend_date_price,dividend,allotment,dividend_yield,re_day,day) VALUES (%s,%s,%s,%s,%s,%s,%s,%s)"
+    val = tuple_item
+    
+    mycursor.execute(sql, val)
+    
+    mydb.commit()
+    
+    print(mycursor.rowcount, "record(s) affected")
 
 def get_dividend(stock):
     r = requests.get("https://stockinfo.tw/dividends/?stockSearch="+str(stock)) #將網頁資料GET下來
@@ -43,15 +35,16 @@ def get_dividend(stock):
             date_2 = date[:10]
         else:
             date_2 = date[:9]
-        data_array = []
         data_tuple = ()
         data_tuple = (str(stock),)
         data_tuple+=(date_2,)
         for i in range(1,count_td):
-            td = tr.find_all("td")[i].get_text()
-            data_tuple+=(td,)
-        data_array.append(data_tuple)
-        get_dividend_db(data_array)
-        print(data_array)
-
-get_dividend(1101)
+            if i!=4 and i!=5 and i!=7 and i!=8:
+                td = tr.find_all("td")[i].get_text()
+                data_tuple+=(td,)
+        dividend_policy(data_tuple)
+        
+stock_array = [2317,2330,2377,2379,2383,1101,2015,2002,2603,2610]
+        
+for i in stock_array:
+    get_dividend(i)
