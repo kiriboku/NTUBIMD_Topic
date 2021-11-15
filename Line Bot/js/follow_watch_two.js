@@ -56,57 +56,57 @@ module.exports.close_date = function close_date() {
     })
 }
 
-// module.exports.best_down = function best_rise(date) {
-//     return new Promise((resolve) => {
-//         conn.query('SELECT * FROM 每日股票交易 where 日期 = "' + date + '" order by 漲跌幅 DESC ', (err, results) => {
-//             if (err) { throw err; }
-//             let y = 0
-//             let i = 0
-//             let array = []
-//             while (y < 3) {
-//                 if (results[i].昨收 > results[i].成交) {
-//                     let array_ndividual = []
-//                     array_ndividual.push(results[i].股票代號)
-//                     array_ndividual.push(results[i].股票名稱)
-//                     array_ndividual.push(results[i].漲跌幅)
-//                     array.push(array_ndividual)
-//                     array_ndividual.splice
-//                     y++
-//                     i++
-//                 } else {
-//                     i++
-//                 }
-//             }
-//             resolve(array)
-//         })
-//     })
-// }
+module.exports.best_down = function best_down(date) {
+    return new Promise((resolve) => {
+        conn.query('SELECT * FROM daily_stock_trading where trading_date = "' + date + '" order by ups_and_downs_fluctuation DESC ', (err, results) => {
+            if (err) { throw err; }
+            let y = 0
+            let i = 0
+            let array = []
+            while (y < 3) {
+                if (results[i].closing_price < results[i].closed_yesterday) {
+                    let array_ndividual = []
+                    array_ndividual.push(results[i].stock)
+                    array_ndividual.push(results[i].company_name_ch)
+                    array_ndividual.push(results[i].ups_and_downs_fluctuation)
+                    array.push(array_ndividual)
+                    array_ndividual.splice
+                    y++
+                    i++
+                } else {
+                    i++
+                }
+            }
+            resolve(array)
+        })
+    })
+}
 
-// module.exports.best_rise = function best_rise(date) {
-//     return new Promise((resolve) => {
-//         conn.query('SELECT * FROM 每日股票交易 where 日期 = "' + date + '" order by 漲跌幅 DESC ', (err, results) => {
-//             if (err) { throw err; }
-//             let y = 0
-//             let i = 0
-//             let array = []
-//             while (y < 3) {
-//                 if (results[i].成交 > results[i].昨收) {
-//                     let array_ndividual = []
-//                     array_ndividual.push(results[i].股票代號)
-//                     array_ndividual.push(results[i].股票名稱)
-//                     array_ndividual.push(results[i].漲跌幅)
-//                     array.push(array_ndividual)
-//                     array_ndividual.splice
-//                     y++
-//                     i++
-//                 } else {
-//                     i++
-//                 }
-//             }
-//             resolve(array)
-//         })
-//     })
-// }
+module.exports.best_rise = function best_rise(date) {
+    return new Promise((resolve) => {
+        conn.query('SELECT * FROM daily_stock_trading where trading_date = "' + date + '" order by ups_and_downs_fluctuation DESC ', (err, results) => {
+            if (err) { throw err; }
+            let y = 0
+            let i = 0
+            let array = []
+            while (y < 3) {
+                if (results[i].closing_price > results[i].closed_yesterday) {
+                    let array_ndividual = []
+                    array_ndividual.push(results[i].stock)
+                    array_ndividual.push(results[i].company_name_ch)
+                    array_ndividual.push(results[i].ups_and_downs_fluctuation)
+                    array.push(array_ndividual)
+                    array_ndividual.splice
+                    y++
+                    i++
+                } else {
+                    i++
+                }
+            }
+            resolve(array)
+        })
+    })
+}
 
 
 

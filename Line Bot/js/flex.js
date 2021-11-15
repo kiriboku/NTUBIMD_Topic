@@ -4583,7 +4583,7 @@ module.exports.best_down = function best_rise(array) {
 }
 //股票跌幅最大
 
-module.exports.Dividend_policy = function Dividend_policy(array) {
+module.exports.flex_Dividend_policy = function flex_Dividend_policy(array) {
   let text = {
     "type": "flex",
     "altText": "this is a flex message",
@@ -4595,11 +4595,11 @@ module.exports.Dividend_policy = function Dividend_policy(array) {
         "contents": [
           {
             "type": "image",
-            "url": "https://lh3.googleusercontent.com/riYz5qUiF53E6pgtrxlvI695JrRtFnPRz8UO8fvd7worvdVEeN4ZKl8k9IpMWW2W_n6QBzDRre0krBJZZg0EpTOyZ_--Qx2W7N1h4kA1_BpdwWYMQmS6hTbjBVFDE6Z9QRGQhY8nC5sO6zs4q93Di1WluTGpMDAPJDo0EdXw5Bx-zTMqHPECADOzL6kf0tdxF-QN8Q4y-Q6rgKGPWyu6NdrWHau9REvdU43oezE0jUPwFJz9tk95BU7JxbPtbHig7jXuuz23sqeJju5_Fkig3Jsea18Zha-JkO7bIl8BjSnCmlXEf7S_YQDC6YBzFznookAgpb8rax29qF9g_0wygOXL2T7iN5mvo0bOFuzkTeTeIXA6doPAoTgBu1W0l5yfYcIqXbM70vTWXtjIqXhmS3Sw4A6fYEEbEiL_opurw0E3wy_hfXmsLIku5hxNl0tr6BkA-y8FmmwatrhpkhZLxTOcx6CUQjdFoaLgLh8gVDV_RJDAVTZla9gKAwT8tCXi89Ywn_9w0o6VCCssu8boBj9VDE5XRp7O0-uDG2tFikxYeCRLsA1jZEnYmTyDchRQFlIOfnceHcBcXNAl3yPc_wUQ9-a6yLKGcGIogvI2UaOqiu2AQqXVESMFDCMX_Fbe5QZ7dd3BHuyRjG-1HmdLkjWaLhMv3rJGCzNExud064DNg-g8RIsTZmbmtHwuqNy5QMFsxyS80SxfEg_A2xiVPLQN=w588-h783-no?authuser=0",
-            "gravity": "top",
             "size": "full",
             "aspectMode": "cover",
-            "aspectRatio": "3:4"
+            "aspectRatio": "4:5",
+            "url": "https://i.imgur.com/B8mq87S.png",
+            "gravity": "top"
           },
           {
             "type": "box",
@@ -4607,7 +4607,7 @@ module.exports.Dividend_policy = function Dividend_policy(array) {
             "contents": [
               {
                 "type": "text",
-                "text": array[5]+" ( "+array[3]+" ) ",
+                "text": array[4]+" ( "+String(array[3])+" ) ",
                 "size": "25px",
                 "weight": "bold",
                 "color": "#ffbd59"
@@ -4624,14 +4624,14 @@ module.exports.Dividend_policy = function Dividend_policy(array) {
             "contents": [
               {
                 "type": "text",
-                "text": array[4],
+                "text": array[5],
                 "size": "15px",
                 "color": "#d9d9d9",
                 "weight": "bold"
               }
             ],
             "position": "absolute",
-            "offsetTop": "95px",
+            "offsetTop": "98px",
             "offsetStart": "150px"
           },
           {
@@ -4660,7 +4660,7 @@ module.exports.Dividend_policy = function Dividend_policy(array) {
                   {
                     "type": "text",
                     "text": array[1][0],
-                    "size": "12px",
+                    "size": "11px",
                     "color": "#d9d9d9",
                     "weight": "bold",
                     "align": "center"
@@ -4685,7 +4685,7 @@ module.exports.Dividend_policy = function Dividend_policy(array) {
               }
             ],
             "position": "absolute",
-            "offsetTop": "130px",
+            "offsetTop": "135px",
             "offsetStart": "83px"
           },
           {
@@ -4739,7 +4739,7 @@ module.exports.Dividend_policy = function Dividend_policy(array) {
               }
             ],
             "position": "absolute",
-            "offsetTop": "155px",
+            "offsetTop": "162px",
             "offsetStart": "90px"
           },
           {
@@ -4752,7 +4752,7 @@ module.exports.Dividend_policy = function Dividend_policy(array) {
                 "contents": [
                   {
                     "type": "text",
-                    "text": array[0][2],
+                    "text": String(array[0][2]),
                     "size": "12px",
                     "color": "#d9d9d9",
                     "weight": "bold",
@@ -4767,7 +4767,7 @@ module.exports.Dividend_policy = function Dividend_policy(array) {
                 "contents": [
                   {
                     "type": "text",
-                    "text": array[1][2],
+                    "text": String(array[1][2]),
                     "size": "12px",
                     "color": "#d9d9d9",
                     "weight": "bold",
@@ -4782,7 +4782,7 @@ module.exports.Dividend_policy = function Dividend_policy(array) {
                 "contents": [
                   {
                     "type": "text",
-                    "text": array[2][2],
+                    "text": String(array[2][2]),
                     "size": "12px",
                     "color": "#d9d9d9",
                     "weight": "bold",
@@ -4793,7 +4793,7 @@ module.exports.Dividend_policy = function Dividend_policy(array) {
               }
             ],
             "position": "absolute",
-            "offsetTop": "185px",
+            "offsetTop": "193px",
             "offsetStart": "90px"
           },
           {
@@ -4806,7 +4806,7 @@ module.exports.Dividend_policy = function Dividend_policy(array) {
                 "contents": [
                   {
                     "type": "text",
-                    "text": array[0][3],
+                    "text": String(array[0][3]),
                     "size": "12px",
                     "color": "#d9d9d9",
                     "weight": "bold",
@@ -4821,7 +4821,7 @@ module.exports.Dividend_policy = function Dividend_policy(array) {
                 "contents": [
                   {
                     "type": "text",
-                    "text": array[1][3],
+                    "text": String(array[1][3]),
                     "size": "12px",
                     "color": "#d9d9d9",
                     "weight": "bold",
@@ -4836,7 +4836,7 @@ module.exports.Dividend_policy = function Dividend_policy(array) {
                 "contents": [
                   {
                     "type": "text",
-                    "text": array[2][3],
+                    "text": String(array[2][3]),
                     "size": "12px",
                     "color": "#d9d9d9",
                     "weight": "bold",
@@ -4847,7 +4847,7 @@ module.exports.Dividend_policy = function Dividend_policy(array) {
               }
             ],
             "position": "absolute",
-            "offsetTop": "213px",
+            "offsetTop": "220px",
             "offsetStart": "90px"
           },
           {
@@ -4860,7 +4860,7 @@ module.exports.Dividend_policy = function Dividend_policy(array) {
                 "contents": [
                   {
                     "type": "text",
-                    "text": array[0][4],
+                    "text": String(array[0][4]),
                     "size": "12px",
                     "color": "#d9d9d9",
                     "weight": "bold",
@@ -4875,7 +4875,7 @@ module.exports.Dividend_policy = function Dividend_policy(array) {
                 "contents": [
                   {
                     "type": "text",
-                    "text": array[1][4],
+                    "text": String(array[1][4]),
                     "size": "12px",
                     "color": "#d9d9d9",
                     "weight": "bold",
@@ -4890,7 +4890,7 @@ module.exports.Dividend_policy = function Dividend_policy(array) {
                 "contents": [
                   {
                     "type": "text",
-                    "text": array[2][4],
+                    "text": String(array[2][4]),
                     "size": "12px",
                     "color": "#d9d9d9",
                     "weight": "bold",
@@ -4901,7 +4901,7 @@ module.exports.Dividend_policy = function Dividend_policy(array) {
               }
             ],
             "position": "absolute",
-            "offsetTop": "243px",
+            "offsetTop": "250px",
             "offsetStart": "90px"
           },
           {
@@ -4914,7 +4914,7 @@ module.exports.Dividend_policy = function Dividend_policy(array) {
                 "contents": [
                   {
                     "type": "text",
-                    "text": array[0][5],
+                    "text": String(array[0][5]),
                     "size": "12px",
                     "color": "#d9d9d9",
                     "weight": "bold",
@@ -4929,7 +4929,7 @@ module.exports.Dividend_policy = function Dividend_policy(array) {
                 "contents": [
                   {
                     "type": "text",
-                    "text": array[1][5],
+                    "text": String(array[1][5]),
                     "size": "12px",
                     "color": "#d9d9d9",
                     "weight": "bold",
@@ -4944,7 +4944,7 @@ module.exports.Dividend_policy = function Dividend_policy(array) {
                 "contents": [
                   {
                     "type": "text",
-                    "text": array[2][5],
+                    "text": String(array[2][5]),
                     "size": "12px",
                     "color": "#d9d9d9",
                     "weight": "bold",
@@ -4955,115 +4955,7 @@ module.exports.Dividend_policy = function Dividend_policy(array) {
               }
             ],
             "position": "absolute",
-            "offsetTop": "268px",
-            "offsetStart": "90px"
-          },
-          {
-            "type": "box",
-            "layout": "horizontal",
-            "contents": [
-              {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [
-                  {
-                    "type": "text",
-                    "text": array[0][6],
-                    "size": "12px",
-                    "color": "#d9d9d9",
-                    "weight": "bold",
-                    "align": "center"
-                  }
-                ],
-                "width": "60px"
-              },
-              {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [
-                  {
-                    "type": "text",
-                    "text": array[1][6],
-                    "size": "12px",
-                    "color": "#d9d9d9",
-                    "weight": "bold",
-                    "align": "center"
-                  }
-                ],
-                "width": "75px"
-              },
-              {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [
-                  {
-                    "type": "text",
-                    "text": array[2][6],
-                    "size": "12px",
-                    "color": "#d9d9d9",
-                    "weight": "bold",
-                    "align": "center"
-                  }
-                ],
-                "width": "70px"
-              }
-            ],
-            "position": "absolute",
-            "offsetTop": "296px",
-            "offsetStart": "90px"
-          },
-          {
-            "type": "box",
-            "layout": "horizontal",
-            "contents": [
-              {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [
-                  {
-                    "type": "text",
-                    "text": array[0][7],
-                    "size": "12px",
-                    "color": "#d9d9d9",
-                    "weight": "bold",
-                    "align": "center"
-                  }
-                ],
-                "width": "60px"
-              },
-              {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [
-                  {
-                    "type": "text",
-                    "text": array[1][7],
-                    "size": "12px",
-                    "color": "#d9d9d9",
-                    "weight": "bold",
-                    "align": "center"
-                  }
-                ],
-                "width": "75px"
-              },
-              {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [
-                  {
-                    "type": "text",
-                    "text": array[2][7],
-                    "size": "12px",
-                    "color": "#d9d9d9",
-                    "weight": "bold",
-                    "align": "center"
-                  }
-                ],
-                "width": "70px"
-              }
-            ],
-            "position": "absolute",
-            "offsetTop": "323px",
+            "offsetTop": "278px",
             "offsetStart": "90px"
           }
         ],
@@ -5073,7 +4965,774 @@ module.exports.Dividend_policy = function Dividend_policy(array) {
   }
   return text
 }
-//股利政策(待修正)
+//股利政策
+
+module.exports.How_to_choice_stock = function How_to_choice_stock() {
+  let text = {
+    "type": "flex",
+    "altText": "this is a flex message",
+    "contents": {
+      "type": "carousel",
+      "contents": [
+        {
+          "type": "bubble",
+          "body": {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "image",
+                "url": "https://i.imgur.com/lUF1KaO.png",
+                "size": "full",
+                "aspectMode": "cover",
+                "gravity": "top",
+                "aspectRatio": "7:8"
+              }
+            ],
+            "paddingAll": "0px"
+          }
+        },
+        {
+          "type": "bubble",
+          "body": {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "image",
+                "url": "https://i.imgur.com/WCgPnJ6.png",
+                "size": "full",
+                "aspectMode": "cover",
+                "gravity": "top",
+                "aspectRatio": "7:8"
+              }
+            ],
+            "paddingAll": "0px"
+          }
+        },
+        {
+          "type": "bubble",
+          "body": {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "image",
+                "url": "https://i.imgur.com/rluBLyk.png",
+                "size": "full",
+                "aspectMode": "cover",
+                "gravity": "top",
+                "aspectRatio": "7:8"
+              }
+            ],
+            "paddingAll": "0px"
+          }
+        },
+        {
+          "type": "bubble",
+          "body": {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "image",
+                "url": "https://i.imgur.com/Ux1gY4U.png",
+                "size": "full",
+                "aspectMode": "cover",
+                "gravity": "top",
+                "aspectRatio": "7:8"
+              }
+            ],
+            "paddingAll": "0px"
+          }
+        }
+      ]
+    }
+  }
+  return text
+}
+//理財知識-怎麼選股票
+
+module.exports.Open_an_account = function Open_an_account() {
+  let text = {
+    "type": "flex",
+    "altText": "this is a flex message",
+    "contents": {
+      "type": "carousel",
+      "contents": [
+        {
+          "type": "bubble",
+          "body": {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "image",
+                "url": "https://i.imgur.com/VlN3UQW.png",
+                "size": "full",
+                "aspectMode": "cover",
+                "gravity": "top",
+                "aspectRatio": "7:8"
+              }
+            ],
+            "paddingAll": "0px"
+          }
+        },
+        {
+          "type": "bubble",
+          "body": {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "image",
+                "url": "https://i.imgur.com/SktFRuU.png",
+                "size": "full",
+                "aspectMode": "cover",
+                "gravity": "top",
+                "aspectRatio": "7:8"
+              }
+            ],
+            "paddingAll": "0px"
+          }
+        },
+        {
+          "type": "bubble",
+          "body": {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "image",
+                "url": "https://i.imgur.com/SC9FT1U.png",
+                "size": "full",
+                "aspectMode": "cover",
+                "gravity": "top",
+                "aspectRatio": "7:8"
+              }
+            ],
+            "paddingAll": "0px"
+          }
+        },
+        {
+          "type": "bubble",
+          "body": {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "image",
+                "url": "https://i.imgur.com/B2AIFDQ.png",
+                "size": "full",
+                "aspectMode": "cover",
+                "gravity": "top",
+                "aspectRatio": "7:8"
+              }
+            ],
+            "paddingAll": "0px"
+          }
+        }
+      ]
+    }
+  }
+  return text
+}
+//理財知識-新手怎麼開戶
+
+module.exports.What_is_movie_average = function What_is_movie_average() {
+  let text = {
+    "type": "flex",
+    "altText": "this is a flex message",
+    "contents": {
+      "type": "carousel",
+      "contents": [
+        {
+          "type": "bubble",
+          "body": {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "image",
+                "url": "https://i.imgur.com/hFGxEjb.png",
+                "size": "full",
+                "aspectMode": "cover",
+                "gravity": "top",
+                "aspectRatio": "7:8"
+              }
+            ],
+            "paddingAll": "0px"
+          }
+        },
+        {
+          "type": "bubble",
+          "body": {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "image",
+                "url": "https://i.imgur.com/Tj6lA8c.png",
+                "size": "full",
+                "aspectMode": "cover",
+                "gravity": "top",
+                "aspectRatio": "7:8"
+              }
+            ],
+            "paddingAll": "0px"
+          }
+        },
+        {
+          "type": "bubble",
+          "body": {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "image",
+                "url": "https://i.imgur.com/EgDuRgc.png",
+                "size": "full",
+                "aspectMode": "cover",
+                "gravity": "top",
+                "aspectRatio": "7:8"
+              }
+            ],
+            "paddingAll": "0px"
+          }
+        },
+        {
+          "type": "bubble",
+          "body": {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "image",
+                "url": "https://i.imgur.com/xGlN0cK.png",
+                "size": "full",
+                "aspectMode": "cover",
+                "gravity": "top",
+                "aspectRatio": "7:8"
+              }
+            ],
+            "paddingAll": "0px"
+          }
+        },
+        {
+          "type": "bubble",
+          "body": {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "image",
+                "url": "https://i.imgur.com/6RznZ9G.png",
+                "size": "full",
+                "aspectMode": "cover",
+                "gravity": "top",
+                "aspectRatio": "7:8"
+              }
+            ],
+            "paddingAll": "0px"
+          }
+        },
+        {
+          "type": "bubble",
+          "body": {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "image",
+                "url": "https://i.imgur.com/NzD2Krq.png",
+                "size": "full",
+                "aspectMode": "cover",
+                "gravity": "top",
+                "aspectRatio": "7:8"
+              }
+            ],
+            "paddingAll": "0px"
+          }
+        }
+      ]
+    }
+  }
+  return text
+}
+//理財知識-什麼是移動平均線
+
+module.exports.company_data = function company_data(array) {
+  let text = {
+    "type": "flex",
+    "altText": "this is a flex message",
+    "contents": {
+      "type": "bubble",
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "image",
+            "url": "https://i.imgur.com/FVOrdTj.png",
+            "gravity": "top",
+            "size": "full",
+            "aspectMode": "cover",
+            "aspectRatio": "3:4"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "text",
+                "text": String(array[0]),
+                "size": "24px",
+                "weight": "bold",
+                "align": "center",
+                "color": "#000D6B"
+              }
+            ],
+            "position": "absolute",
+            "offsetTop": "115px",
+            "offsetStart": "135px",
+            "width": "100px"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "text",
+                "text": array[1],
+                "size": "21px",
+                "weight": "bold",
+                "align": "center"
+              }
+            ],
+            "position": "absolute",
+            "offsetTop": "160px",
+            "offsetStart": "135px",
+            "width": "100px"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "text",
+                "text": array[2],
+                "size": "20px",
+                "weight": "bold",
+                "align": "center"
+              }
+            ],
+            "position": "absolute",
+            "offsetTop": "200px",
+            "offsetStart": "135px",
+            "width": "100px"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "text",
+                "text": array[3],
+                "size": "21px",
+                "weight": "bold",
+                "align": "center"
+              }
+            ],
+            "position": "absolute",
+            "offsetTop": "240px",
+            "offsetStart": "135px",
+            "width": "100px"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "text",
+                "text": array[4],
+                "size": "20px",
+                "weight": "bold",
+                "align": "center",
+                "style": "italic"
+              }
+            ],
+            "position": "absolute",
+            "offsetTop": "285px",
+            "offsetStart": "130px",
+            "width": "120px"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "text",
+                "text": array[5],
+                "size": "20px",
+                "weight": "bold",
+                "align": "center",
+                "style": "italic"
+              }
+            ],
+            "position": "absolute",
+            "offsetTop": "325px",
+            "offsetStart": "130px",
+            "width": "120px"
+          }
+        ],
+        "paddingAll": "0px"
+      }
+    }
+  }
+  return text
+}
+//公司基本資料
+
+module.exports.flex_eps = function flex_eps(array) {
+  let text = {
+    "type": "flex",
+    "altText": "this is a flex message",
+    "contents": {
+      "type": "bubble",
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "image",
+            "size": "full",
+            "aspectMode": "cover",
+            "aspectRatio": "5:6",
+            "url": "https://i.imgur.com/pC9cwr2.png",
+            "gravity": "top"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "text",
+                "text": array[4],
+                "weight": "bold",
+                "size": "28px"
+              }
+            ],
+            "position": "absolute",
+            "offsetTop": "70px",
+            "offsetStart": "160px"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "text",
+                "text": array[0][0],
+                "weight": "bold",
+                "size": "24px",
+                "align": "center"
+              }
+            ],
+            "position": "absolute",
+            "offsetTop": "170px",
+            "width": "120px",
+            "offsetStart": "33px"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "text",
+                "text": array[0][1],
+                "weight": "bold",
+                "size": "24px",
+                "align": "center"
+              }
+            ],
+            "position": "absolute",
+            "offsetTop": "170px",
+            "width": "80px",
+            "offsetStart": "150px"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "text",
+                "text": array[1][0],
+                "weight": "bold",
+                "size": "24px",
+                "align": "center"
+              }
+            ],
+            "position": "absolute",
+            "offsetTop": "208px",
+            "width": "120px",
+            "offsetStart": "33px"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "text",
+                "text": array[1][1],
+                "weight": "bold",
+                "size": "24px",
+                "align": "center"
+              }
+            ],
+            "position": "absolute",
+            "offsetTop": "207px",
+            "width": "80px",
+            "offsetStart": "150px"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "text",
+                "text": array[2][0],
+                "weight": "bold",
+                "size": "24px",
+                "align": "center"
+              }
+            ],
+            "position": "absolute",
+            "offsetTop": "245px",
+            "width": "120px",
+            "offsetStart": "33px"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "text",
+                "text": array[2][1],
+                "weight": "bold",
+                "size": "24px",
+                "align": "center"
+              }
+            ],
+            "position": "absolute",
+            "offsetTop": "245px",
+            "width": "80px",
+            "offsetStart": "150px"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "text",
+                "text": array[3][0],
+                "weight": "bold",
+                "size": "24px",
+                "align": "center"
+              }
+            ],
+            "position": "absolute",
+            "offsetTop": "280px",
+            "width": "120px",
+            "offsetStart": "33px"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "text",
+                "text": array[3][1],
+                "weight": "bold",
+                "size": "24px",
+                "align": "center"
+              }
+            ],
+            "position": "absolute",
+            "offsetTop": "280px",
+            "width": "80px",
+            "offsetStart": "150px"
+          }
+        ],
+        "paddingAll": "0px"
+      }
+    }
+  }
+  return text
+}
+//公司EPS
+
+module.exports.flex_profitability = function flex_profitability(array) {
+  let text = {
+    "type": "flex",
+    "altText": "this is a flex message",
+    "contents": {
+      "type": "bubble",
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "image",
+            "size": "full",
+            "aspectMode": "cover",
+            "aspectRatio": "5:6",
+            "url": "https://i.imgur.com/Z5DjNvN.png",
+            "gravity": "top"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "text",
+                "text": array[0],
+                "size": "20px",
+                "weight": "bold"
+              }
+            ],
+            "position": "absolute",
+            "offsetTop": "40px",
+            "offsetStart": "25px"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "text",
+                "text": array[1],
+                "weight": "bold",
+                "size": "25px",
+                "align": "center"
+              }
+            ],
+            "position": "absolute",
+            "offsetTop": "115px",
+            "offsetStart": "155px",
+            "width": "130px"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "text",
+                "text": array[2],
+                "weight": "bold",
+                "size": "18px",
+                "align": "end"
+              }
+            ],
+            "position": "absolute",
+            "offsetTop": "155px",
+            "offsetStart": "150px",
+            "width": "100px"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "text",
+                "text": array[3],
+                "weight": "bold",
+                "size": "18px",
+                "align": "end"
+              }
+            ],
+            "position": "absolute",
+            "offsetTop": "185px",
+            "offsetStart": "150px",
+            "width": "100px"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "text",
+                "text": array[4],
+                "weight": "bold",
+                "size": "18px",
+                "align": "end"
+              }
+            ],
+            "position": "absolute",
+            "offsetTop": "213px",
+            "offsetStart": "150px",
+            "width": "100px"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "text",
+                "text": array[5],
+                "weight": "bold",
+                "size": "18px",
+                "align": "end"
+              }
+            ],
+            "position": "absolute",
+            "offsetTop": "243px",
+            "offsetStart": "150px",
+            "width": "100px"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "text",
+                "text": array[6],
+                "weight": "bold",
+                "size": "18px",
+                "align": "end"
+              }
+            ],
+            "position": "absolute",
+            "offsetTop": "270px",
+            "offsetStart": "150px",
+            "width": "100px"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "text",
+                "text": array[7],
+                "weight": "bold",
+                "size": "18px",
+                "align": "end"
+              }
+            ],
+            "position": "absolute",
+            "offsetTop": "300px",
+            "offsetStart": "115px",
+            "width": "110px"
+          }
+        ],
+        "paddingAll": "0px"
+      }
+    }
+  }
+  return text
+}
+//公司EPS
+
+
 
 
 

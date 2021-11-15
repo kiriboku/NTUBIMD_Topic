@@ -9,6 +9,9 @@ var News = require("./js/News")
 var user = require("./js/user")
 var Dividend_policy = require("./js/Dividend_policy")
 var dict = require("./js/dict")
+var company = require("./js/company")
+var eps = require("./js/eps")
+var profitability = require("./js/profitability")
 
 const client = new line.Client({
   channelAccessToken: 'qQ8Jy0v3j3pUlOebdVPnNmj7dxOC1Td8sfDIE7PiMnpxceApOWRmWdbP1buzeStt+WeOY+OFyJDqrkLK/DvIC+9vhED7MdqKoZ1D6q+y8WocAqBMqt1SVQX5LZmkVGv3m6j7fX8gW+CPjzPPJ7AdEAdB04t89/1O/w1cDnyilFU='
@@ -37,7 +40,6 @@ var news_2002 = ["2002新聞", "中鋼新聞"]
 var news_2603 = ["2603新聞", "長榮新聞"]
 var news_2610 = ["2610新聞", "華航新聞"]
 var news_2015 = ["2015新聞", "豐興新聞"]
-var police_2330 = ['2330股利政策']
 
 var array_company = ["2317", "2330", "2377", "2379", "2383", "1101", "2015", "2002", "2603", "2610"];
 
@@ -62,7 +64,7 @@ bot.on('message', function (event) {
     let stock = event.message.text.substr(1, 4)
     Promise.all([follow_watch_one.show_follow(event.source.userId)])
       .then(([oneSecond]) => {
-        if(array_company.includes(stock)){
+        if (array_company.includes(stock)) {
           if (oneSecond.includes(stock)) {
             event.reply('股票代號：' + stock + '已在關注清單')
           }
@@ -73,7 +75,7 @@ bot.on('message', function (event) {
             })
           }
         }
-        else{
+        else {
           event.reply("很抱歉，我們暫時沒有 " + stock + " 的資料")
         }
       })
@@ -210,14 +212,43 @@ bot.on('message', function (event) {
             })
         })
     }
-    else if (police_2330.includes(message)) {
-      Promise.all([Dividend_policy.Dividend_policy('2330')])
+    else if (message == "怎麼選股票") {
+      event.reply(flex.How_to_choice_stock())
+    }
+    else if (message == "新手如何開戶") {
+      event.reply(flex.Open_an_account())
+    }
+    else if (message == "什麼是移動平均線") {
+      event.reply(flex.What_is_movie_average())
+    }
+    else if (message == "2330基本資料") {
+      Promise.all([company.company_data(2330)])
         .then(([oneSecond]) => {
-          oneSecond.push('台積電')
-          event.reply(flex.Dividend_policy(oneSecond)).then(function (data) {
-            // 當訊息成功回傳後的處理
-          })
+          event.reply(flex.company_data(oneSecond))
         })
+    }
+    else if (message == "2330每股盈餘") {
+      Promise.all([eps.eps_data(2330)])
+        .then(([oneSecond]) => {
+          event.reply(flex.flex_eps(oneSecond))
+        })
+    }
+    else if (message == "2330獲利能力") {
+      Promise.all([profitability.get_close_date()])
+        .then(([oneSecond]) => {
+          Promise.all([profitability.profitability_data(2330,oneSecond)])
+            .then(([oneSecond]) => {
+              event.reply(flex.flex_profitability(oneSecond)).then(function (data) {
+                // 當訊息成功回傳後的處理
+              })
+            })
+        })
+    }
+    else if (message == "2330股利政策") {
+      Promise.all([Dividend_policy.Dividend_policy_data(2330)])
+      .then(([oneSecond]) => {
+        event.reply(flex.flex_Dividend_policy(oneSecond))
+      })
     }
     else {
       event.reply(message).then(function (data) {

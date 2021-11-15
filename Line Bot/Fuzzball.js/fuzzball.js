@@ -113,7 +113,7 @@ function classify_stock(quest, turn) {
 
 function classify_kno(quest, turn) {
     Str_quest = String(quest)
-    let choices = ["什麼是股票", "什麼是期貨", "什麼是債券", "什麼是ETF", "什麼是K線", "什麼是KD線"]
+    let choices = ["怎麼選股票","新手如何開戶","什麼是移動平均線"]
     results = fuzz.extract(Str_quest, choices)//fuzz.extract(query, choices, options);
     let max = 0
     let max_text = 0
@@ -132,7 +132,7 @@ function classify_kno(quest, turn) {
 
 function classify_com(quest, turn) {
     Str_quest = String(quest)
-    let choices = ["台積電每股盈餘", "台積電經營能力", "台積電獲利能力","2330股利政策"]
+    let choices = ["2330基本資料","2330股利政策","2330每股盈餘","2330獲利能力"]
     results = fuzz.extract(Str_quest, choices)//fuzz.extract(query, choices, options);
     let max = 0
     let max_text = 0
