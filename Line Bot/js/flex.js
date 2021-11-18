@@ -5432,7 +5432,7 @@ module.exports.flex_eps = function flex_eps(array) {
             "contents": [
               {
                 "type": "text",
-                "text": array[0][0],
+                "text": array[0][0]+" "+array[0][1],
                 "weight": "bold",
                 "size": "24px",
                 "align": "center"
@@ -5449,7 +5449,7 @@ module.exports.flex_eps = function flex_eps(array) {
             "contents": [
               {
                 "type": "text",
-                "text": array[0][1],
+                "text": array[0][2],
                 "weight": "bold",
                 "size": "24px",
                 "align": "center"
@@ -5466,7 +5466,7 @@ module.exports.flex_eps = function flex_eps(array) {
             "contents": [
               {
                 "type": "text",
-                "text": array[1][0],
+                "text": array[1][0]+" "+array[1][1],
                 "weight": "bold",
                 "size": "24px",
                 "align": "center"
@@ -5483,7 +5483,7 @@ module.exports.flex_eps = function flex_eps(array) {
             "contents": [
               {
                 "type": "text",
-                "text": array[1][1],
+                "text": array[1][2],
                 "weight": "bold",
                 "size": "24px",
                 "align": "center"
@@ -5500,7 +5500,7 @@ module.exports.flex_eps = function flex_eps(array) {
             "contents": [
               {
                 "type": "text",
-                "text": array[2][0],
+                "text": array[2][0]+" "+array[2][1],
                 "weight": "bold",
                 "size": "24px",
                 "align": "center"
@@ -5517,7 +5517,7 @@ module.exports.flex_eps = function flex_eps(array) {
             "contents": [
               {
                 "type": "text",
-                "text": array[2][1],
+                "text": array[2][2],
                 "weight": "bold",
                 "size": "24px",
                 "align": "center"
@@ -5534,7 +5534,7 @@ module.exports.flex_eps = function flex_eps(array) {
             "contents": [
               {
                 "type": "text",
-                "text": array[3][0],
+                "text": array[3][0]+" "+array[3][1],
                 "weight": "bold",
                 "size": "24px",
                 "align": "center"
@@ -5551,7 +5551,7 @@ module.exports.flex_eps = function flex_eps(array) {
             "contents": [
               {
                 "type": "text",
-                "text": array[3][1],
+                "text": array[3][2],
                 "weight": "bold",
                 "size": "24px",
                 "align": "center"
@@ -5610,7 +5610,7 @@ module.exports.flex_profitability = function flex_profitability(array) {
             "contents": [
               {
                 "type": "text",
-                "text": array[1],
+                "text": array[1]+" "+array[2],
                 "weight": "bold",
                 "size": "25px",
                 "align": "center"
@@ -5627,7 +5627,7 @@ module.exports.flex_profitability = function flex_profitability(array) {
             "contents": [
               {
                 "type": "text",
-                "text": array[2],
+                "text": array[3],
                 "weight": "bold",
                 "size": "18px",
                 "align": "end"
@@ -5644,7 +5644,7 @@ module.exports.flex_profitability = function flex_profitability(array) {
             "contents": [
               {
                 "type": "text",
-                "text": array[3],
+                "text": array[4],
                 "weight": "bold",
                 "size": "18px",
                 "align": "end"
@@ -5661,7 +5661,7 @@ module.exports.flex_profitability = function flex_profitability(array) {
             "contents": [
               {
                 "type": "text",
-                "text": array[4],
+                "text": array[5],
                 "weight": "bold",
                 "size": "18px",
                 "align": "end"
@@ -5678,7 +5678,7 @@ module.exports.flex_profitability = function flex_profitability(array) {
             "contents": [
               {
                 "type": "text",
-                "text": array[5],
+                "text": array[6],
                 "weight": "bold",
                 "size": "18px",
                 "align": "end"
@@ -5695,7 +5695,7 @@ module.exports.flex_profitability = function flex_profitability(array) {
             "contents": [
               {
                 "type": "text",
-                "text": array[6],
+                "text": array[7],
                 "weight": "bold",
                 "size": "18px",
                 "align": "end"
@@ -5712,7 +5712,7 @@ module.exports.flex_profitability = function flex_profitability(array) {
             "contents": [
               {
                 "type": "text",
-                "text": array[7],
+                "text": array[8],
                 "weight": "bold",
                 "size": "18px",
                 "align": "end"

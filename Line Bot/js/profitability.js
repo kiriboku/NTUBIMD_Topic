@@ -26,11 +26,12 @@ conn.connect(
 
 //資料庫連線設定
 
-module.exports.profitability_data = function profitability_data(stock,quarter) {
+module.exports.profitability_data = function profitability_data_T(stock) {
     return new Promise((resolve) => {
-        conn.query('SELECT * FROM profitability where stock = ? and quarter = ?;', [stock,quarter], (err, results) => {
+        conn.query('SELECT * FROM profitability where stock = ? order by years Desc,quarter Desc;', [stock], (err, results) => {
             let array = []
             array.push(String(stock)+dict.dict_toCh(stock))
+            array.push(results[0].years)
             array.push(results[0].quarter)
             array.push(String(results[0].gpm)+"%")
             array.push(String(results[0].roa)+"%")
@@ -39,14 +40,6 @@ module.exports.profitability_data = function profitability_data(stock,quarter) {
             array.push(String(results[0].pbt)+"%")
             array.push(String(results[0].pb))
             resolve(array)
-        })
-    })
-}
-
-module.exports.get_close_date = function get_close_date() {
-    return new Promise((resolve) => {
-        conn.query('SELECT quarter FROM profitability order by quarter DESC ;', (err, results) => {
-            resolve(results[0].quarter)
         })
     })
 }

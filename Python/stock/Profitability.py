@@ -13,7 +13,7 @@ def Profitability_db(tuple_item):
 
     mycursor = mydb.cursor()
     
-    sql = "INSERT INTO profitability (quarter,stock,gpm,roa,opm,roe,pbt,pb) VALUES (%s,%s,%s,%s,%s,%s,%s,%s)"
+    sql = "INSERT INTO profitability (years,quarter,stock,gpm,roa,opm,roe,pbt,pb) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)"
     val = tuple_item
     
     mycursor.execute(sql, val)
@@ -28,7 +28,8 @@ def Profitability(stock):
     step1 = html.find_all(class_="table-grid row-fit-half")
     count = 0
     data_tuple = ()
-    data_tuple+=("2021 Q3",)
+    data_tuple+=("2021",)
+    data_tuple+=("Q3",)
     data_tuple+=(str(stock),)
     for i in step1:
         step2 = i.find_all(class_="grid-item item-span-6 break-mobile")

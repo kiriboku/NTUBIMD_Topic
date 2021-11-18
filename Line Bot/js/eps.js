@@ -28,16 +28,20 @@ conn.connect(
 
 module.exports.eps_data = function eps_data(stock) {
     return new Promise((resolve) => {
-        conn.query('SELECT * FROM eps where stock = ? order by quarter DESC ;', [stock], (err, results) => {
+        conn.query('SELECT * FROM eps where stock = ? order by years Desc,quarter Desc;', [stock], (err, results) => {
             let array = []
             for (i = 0; i < 4; i++) {
                 array_D = []
+                array_D.push(results[i].years)
                 array_D.push(results[i].quarter)
                 array_D.push(String(results[i].eps))
                 array.push(array_D)
             }
-            array.push(dict.dict_toCh(2330))
+            array.push(dict.dict_toCh(stock))
             resolve(array)
         })
     })
 }
+
+
+

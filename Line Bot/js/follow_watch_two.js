@@ -23,7 +23,15 @@ conn.connect(
         }
     });
 
-//資料庫連線設定    
+//資料庫連線設定
+
+function toCurrency(num){
+    var parts = num.toString().split('.');
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    return parts.join('.');
+}
+
+//將數字加上千分位
 
 module.exports.list = function list_test(stock) {
     return new Promise((resolve) => {
@@ -39,10 +47,10 @@ module.exports.list = function list_test(stock) {
             array.push(String(results[0].lowest_price))
             array.push(String(results[0].average_price))
             array.push(String(results[0].closed_yesterday))
-            array.push(String(results[0].ups_and_downs_fluctuation))
+            array.push(String(results[0].ups_and_downs_fluctuation)+"%")
             array.push(String(results[0].ups_and_downs))
-            array.push(results[0].total)
-            array.push(results[0].total_fluctuation)
+            array.push(toCurrency(results[0].total))
+            array.push(toCurrency(results[0].total_fluctuation))
             resolve(array)
         })
     })

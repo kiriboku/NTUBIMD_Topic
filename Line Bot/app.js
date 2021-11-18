@@ -234,14 +234,9 @@ bot.on('message', function (event) {
         })
     }
     else if (message == "2330獲利能力") {
-      Promise.all([profitability.get_close_date()])
+      Promise.all([profitability.profitability_data(2330)])
         .then(([oneSecond]) => {
-          Promise.all([profitability.profitability_data(2330,oneSecond)])
-            .then(([oneSecond]) => {
-              event.reply(flex.flex_profitability(oneSecond)).then(function (data) {
-                // 當訊息成功回傳後的處理
-              })
-            })
+          event.reply(flex.flex_profitability(oneSecond))
         })
     }
     else if (message == "2330股利政策") {

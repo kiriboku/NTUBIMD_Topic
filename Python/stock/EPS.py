@@ -12,7 +12,7 @@ def eps_db(tuple_item):
 
     mycursor = mydb.cursor()
     
-    sql = "INSERT INTO eps (quarter,stock,eps) VALUES (%s,%s,%s)"
+    sql = "INSERT INTO eps (years,quarter,stock,eps) VALUES (%s,%s,%s,%s)"
     val = tuple_item
     
     mycursor.execute(sql, val)
@@ -34,23 +34,31 @@ def EPS(stock):
                 count += 1
                 if count==31:
                     date = i.find(class_="As(st) Bxz(bb) Pstart(12px) Py(8px) Bgc(#f5f8fa) C($c-secondary-text) W(30%) Miw(u) Pend(12px) Mend(0)").get_text()
+                    quarter = date[-2:]
+                    year = date[:4]
                     EPS = i.find(class_="Py(8px) W(70%) Pstart(12px) Bxz(bb)").get_text()[:-2]
-                    data_touple = (date,stock,EPS)
+                    data_touple = (year,quarter,stock,EPS)
                     eps_db(data_touple)
                 elif count==33:
                     date = i.find(class_="As(st) Bxz(bb) Pstart(12px) Py(8px) Bgc(#f5f8fa) C($c-secondary-text) W(30%) Miw(u) Pend(12px) Mend(0)").get_text()
+                    quarter = date[-2:]
+                    year = date[:4]
                     EPS = i.find(class_="Py(8px) W(70%) Pstart(12px) Bxz(bb)").get_text()[:-2]
-                    data_touple = (date,stock,EPS)
+                    data_touple = (year,quarter,stock,EPS)
                     eps_db(data_touple)
                 elif count==35:
                     date = i.find(class_="As(st) Bxz(bb) Pstart(12px) Py(8px) Bgc(#f5f8fa) C($c-secondary-text) W(30%) Miw(u) Pend(12px) Mend(0)").get_text()
+                    quarter = date[-2:]
+                    year = date[:4]
                     EPS = i.find(class_="Py(8px) W(70%) Pstart(12px) Bxz(bb)").get_text()[:-2]
-                    data_touple = (date,stock,EPS)
+                    data_touple = (year,quarter,stock,EPS)
                     eps_db(data_touple)
                 elif count==37:
                     date = i.find(class_="As(st) Bxz(bb) Pstart(12px) Py(8px) Bgc(#f5f8fa) C($c-secondary-text) W(30%) Miw(u) Pend(12px) Mend(0)").get_text()
+                    quarter = date[-2:]
+                    year = date[:4]
                     EPS = i.find(class_="Py(8px) W(70%) Pstart(12px) Bxz(bb)").get_text()[:-2]
-                    data_touple = (date,stock,EPS)
+                    data_touple = (year,quarter,stock,EPS)
                     eps_db(data_touple)
     
 stock_array = [2317,2330,2377,2379,2383,1101,2015,2002,2603,2610]

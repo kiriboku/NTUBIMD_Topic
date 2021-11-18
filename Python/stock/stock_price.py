@@ -12,7 +12,7 @@ def news_db(tuple_stock):
 
     mycursor = mydb.cursor()
     
-    sql = "INSERT INTO daily_stock_trading (trading_date,stock,stock_name,closing_price,opening_price,high_price,lowest_price,average_price,volume,closed_yesterday,ups_and_downs_fluctuation,ups_and_downs,total,total_yesterday,total_fluctuation) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+    sql = "INSERT INTO daily_stock_trading (trading_date,stock,company_name_ch,closing_price,opening_price,high_price,lowest_price,average_price,volume,closed_yesterday,ups_and_downs_fluctuation,ups_and_downs,total,total_yesterday,total_fluctuation) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
     val = tuple_stock
     
     mycursor.execute(sql, val)
@@ -56,6 +56,19 @@ def stock_spider():#日期、股票代號、股票名稱、成交、開盤、最
         array.append(i)
         array.append(name)
         array.extend(stock_test(i))
+        ups_and_downs_fluctuation = array[10]
+        del array[10]
+        array.insert(10,ups_and_downs_fluctuation.replace("%",""))
+        total = array[12]
+        del array[12]
+        array.insert(12,total.replace(",",""))
+        total_yesterday = array[13]
+        del array[13]
+        array.insert(13,total_yesterday.replace(",",""))
+        total_fluctuation = array[14]
+        del array[14]
+        array.insert(14,total_fluctuation.replace("%",""))
+        print(tuple(array))
         news_db(tuple(array))
 
     
